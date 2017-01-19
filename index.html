@@ -1,15 +1,53 @@
 <!DOCTYPE html><html lang="pl">
 <head>
 	<meta charset="utf-8">
-	<title>Radio-Red</title>
+	<title>radioRADIO red</title>
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
 	<meta name="mobile-web-app-capable" content="yes">
 	<link rel="shortcut icon" sizes="128x128" href="radioRADIO.png"/>    
 <style>
-    body,a,li,button {font:normal 0.95em/1.7em verdana; margin:0.5em;}
+    body,a,li,button {font:normal 1em/1.5em verdana; margin:0.5em;}
     body,a,li {background:#666; color:white;}
+	body {margin:0;padding:0;}
+	div {clear:both;margin:0.25em;padding:0.25em;}
     a{text-decoration:none;}
-    #info {background:#bbb; color:black;}
+    #info {background:#bbb; color:black; min-height:2em; line-height:1.25em;}
+button{
+    min-width: 7.5em;
+    text-align: center;
+    border-width: 0;
+    float: left;
+    white-space: nowrap;
+    margin: .5em;
+    line-height: 1.66em;
+    padding: 0.4em;
+    border-radius: 1em;
+}	
+.c0{background:#202020; color:white;}
+.c1{background:#F5003D; color:white;}
+.c2{background:#84090F; color:white;}
+.c3{background:#46A546; color:black;}
+.c4{background:#2F6F2F; color:white;}
+.c5{background:#049CDB; color:black;}
+.c6{background:#0378AA; color:white;}
+.c7{background:#1dd2af; color:black;}
+.c8{background:#19b698; color:black;}
+.c9{background:#40d47e; color:black;}
+.c10{background:#2cc36b; color:black;}
+.c11{background:#4aa3df; color:black;}
+.c12{background:#2e8ece; color:black;}
+.c13{background:#a66bbe; color:black;}
+.c14{background:#9b50ba; color:black;}
+.c15{background:#3d566e; color:white;}
+.c16{background:#354b60; color:white;}
+.c17{background:#f2ca27; color:black;}
+.c18{background:#f4a62a; color:black;}
+.c19{background:#e98b39; color:black;}
+.c20{background:#ec5e00; color:black;}
+.c21{background:#ea6153; color:black;}
+.c22{background:#d14233; color:white;}
+.c23{background:#fbfcfc; color:black;}
+.c24{background:#cbd0d3; color:black;}	
 </style>
 
 <script>
@@ -31,17 +69,29 @@ function ajx(u){
 }
 
 function installButtos(){
-	fetch('radio.json').then(function(e){
-		return e.json()
-	}).then(function(j){
-		console.log(j);
-		//$("info").innerHTML=out;
-	});
-	
-	
+    fetch("radio.json",{
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "GET",
+        mode:"cors",
+	    redirect:"follow"
+        //body: JSON.stringify({title:title, body:body})
+    }).then(function(res){ 
+        return res.json();
+    }).then(function(out){
+        console.log(out);
+		$("radios").innerHTML ='';
+		out.forEach(function(r,x){
+			var c = x%20;
+			$("radios").innerHTML += "<button onClick='ajx(\"/mpd/play/"+x+"\")' class='c"+c+"'>"+r.title+"</button>";
+		});
+    }).catch(function(res){ console.log(res)});
 }
-//setTimeout(function(){ajx('info')},5000);
-//setInterval(function(){ajx('info')},30000);
+
+//setTimeout(function(){ajx('/mpd/info/!')},5000);
+//setInterval(function(){ajx('/mpd/info/!')},30000);
 document.addEventListener('DOMContentLoaded', function() {
 	installButtos();
 });
@@ -52,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div id="info" ></div>
 
 <div id="control" class="buttons">
+    <button onClick="ajx('/mpd/info/!')">Info</button>
     <button onClick="ajx('/mpd/stop/!')">Stop</button>
     <button onClick="ajx('/mpd/play/!')">Play</button>
     <button onClick="ajx('/mpd/pause/!')">Pause</button>
@@ -63,40 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div id="radios" class="buttons">
-	<button onClick='ajx("/mpd/play/0")' class='c0'>RMF Classic</button>
-	<button onClick='ajx("/mpd/play/1")' class='c1'>TOK FM</button>
-	<button onClick='ajx("/mpd/play/2")' class='c2'>Jedynka</button>
-	<button onClick='ajx("/mpd/play/3")' class='c3'>Dwójka</button>
-	<button onClick='ajx("/mpd/play/4")' class='c4'>Trójka</button>
-	<button onClick='ajx("/mpd/play/5")' class='c5'>Czwórka</button>
-	<button onClick='ajx("/mpd/play/6")' class='c6'>Sz-n PR</button>
-	<button onClick='ajx("/mpd/play/7")' class='c7'>Sz-n FM</button>
-	<button onClick='ajx("/mpd/play/8")' class='c8'>Złote</button>
-	<button onClick='ajx("/mpd/play/9")' class='c9'>SmoothPL</button>
-	<button onClick='ajx("/mpd/play/10")' class='c10'>LoungePL</button>
-	<button onClick='ajx("/mpd/play/11")' class='c11'>LoungeLove</button>
-	<button onClick='ajx("/mpd/play/12")' class='c12'>Sax</button>
-	<button onClick='ajx("/mpd/play/13")' class='c13'>VIENNA</button>
-	<button onClick='ajx("/mpd/play/14")' class='c14'>Baroque</button>
-	<button onClick='ajx("/mpd/play/15")' class='c15'>Classic</button>
-	<button onClick='ajx("/mpd/play/16")' class='c16'>Jazz</button>
-	<button onClick='ajx("/mpd/play/17")' class='c17'>Lounge</button>
-	<button onClick='ajx("/mpd/play/18")' class='c18'>Rock</button>
-	<button onClick='ajx("/mpd/play/19")' class='c19'>Live</button>
-	<button onClick='ajx("/mpd/play/20")' class='c0'>Illinois Str</button>
-	<button onClick='ajx("/mpd/play/21")' class='c1'>U80</button>
-	<button onClick='ajx("/mpd/play/22")' class='c2'>U70</button>
-	<button onClick='ajx("/mpd/play/23")' class='c3'>EleJazz</button>
-	<button onClick='ajx("/mpd/play/24")' class='c4'>Best UK</button>
-	<button onClick='ajx("/mpd/play/25")' class='c5'>1-FM</button>
-	<button onClick='ajx("/mpd/play/26")' class='c6'>Seabreez</button>
-	<button onClick='ajx("/mpd/play/27")' class='c7'>Reprises</button>
-	<button onClick='ajx("/mpd/play/28")' class='c8'>SM Utah</button>
-	<button onClick='ajx("/mpd/play/29")' class='c9'>SmoothCom</button>
-	<button onClick='ajx("/mpd/play/30")' class='c10'>Smooth97</button>
-	<button onClick='ajx("/mpd/play/31")' class='c11'>Sax4ever</button>
-	<button onClick='ajx("/mpd/play/32")' class='c12'>Calm Chorale</button>
-	<button onClick='ajx("/mpd/play/33")' class='c13'>Chorale 3</button>
+
 </div>
 
 </body>
