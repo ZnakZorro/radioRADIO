@@ -2,10 +2,10 @@
 	"title": "RMF Classic",
 	"stream": "http://31.192.216.5:8000/rmf_classic"
 }, {
-	"title": "TOK FM1",
+	"title": "TOK FM 48p",
 	"stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg"
 }, {
-	"title": "TOK FM2",
+	"title": "TOK FM 41g",
 	"stream": "http://gdansk1-1.radio.pionier.net.pl:8000/pl/tuba10-1.mp3"
 }, {
 	"title": "Jedynka",
