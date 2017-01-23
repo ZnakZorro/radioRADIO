@@ -10,10 +10,10 @@
 <pre>/etc/mpd.conf.DAC</pre>
 
 
-Extra info:
-<code>sudo nano ~/.asoundrc</code>
+<h4>Extra info:</h4>
+<pre>sudo nano ~/.asoundrc</pre>
 
-<code>
+<pre>
 pcm.!default {
     type hw
     card 1
@@ -23,6 +23,6 @@ ctl.!default {
     type hw
     card 0
 }
-</code>
+</pre>
 
 
