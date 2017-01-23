@@ -1,0 +1,54 @@
+#sudo service mpd restart
+
+music_directory		"/media/pen/Music"
+playlist_directory	"/home/pi/playlists/mpd"
+db_file			"/var/lib/mpd/tag_cache"
+log_file		"/var/log/mpd/mpd.log"
+pid_file		"/run/mpd/pid"
+state_file		"/var/lib/mpd/state"
+sticker_file		"/var/lib/mpd/sticker.sql"
+user			"mpd"
+bind_to_address		"localhost"
+input {
+	plugin "curl"
+}
+
+
+#BLUETOOTH
+#audio_output {
+#type "alsa"
+#name "bluetooth"
+#device "bluetooth"
+#mixer_type "software"
+#}
+
+
+
+# DAC
+#audio_output {
+#type      "alsa"
+#name      "USB Aidio DAC"
+#device    "hw:1,0"        # optional
+#format    "44100:16:2"    # optional
+#mixer_type "software"
+#mixer_control "PCM" 
+#}
+
+
+
+# GPIO
+audio_output {
+type	"alsa"
+name	"My ALSA Device"
+device	"hw:0,0"	# optional
+#	  mixer_type      "hardware"      # optional
+#	  mixer_device	"default"	# optional
+#	  mixer_control	"PCM"		# optional
+#	  mixer_index	"0"		# optional
+}
+
+
+filesystem_charset		"UTF-8"
+
+id3v1_encoding			"UTF-8"
+
