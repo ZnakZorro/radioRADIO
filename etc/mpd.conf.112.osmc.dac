@@ -1,0 +1,72 @@
+music_directory		"/home/osmc/Music"
+playlist_directory	"/home/osmc/Music/playlists/mpd"
+db_file				"/var/lib/mpd/tag_cache"
+log_file			"/var/log/mpd/mpd.log"
+pid_file			"/run/mpd/pid"
+state_file			"/var/lib/mpd/state"
+sticker_file		"/var/lib/mpd/sticker.sql"
+#user				"mpd"
+user				"mpd"
+#group				"nogroup"
+bind_to_address		"localhost"
+#port				"6600"
+#log_level			"default"
+#gapless_mp3_playback	"yes"
+#restore_paused 		"no"
+save_absolute_paths_in_playlists	"yes"
+#metadata_to_use		"artist,album,title,track,name,genre,date,composer,performer,disc"
+#auto_update    		"yes"
+#auto_update_depth 		"3"
+#follow_outside_symlinks	"yes"
+#follow_inside_symlinks		"yes"
+#password					"password@read,add,control,admin"
+#default_permissions		"read,add,control,admin"
+
+# Input #######################################################################
+input {
+        plugin "curl"
+#       proxy "proxy.isp.com:8080"
+#       proxy_user "user"
+#       proxy_password "password"
+}
+
+# Audio Output ################################################################
+# DAC
+audio_output {
+	type            "alsa"
+	name            "USB Aidio DAC"
+	device          "hw:1,0"
+	format          "44100:16:2"
+	mixer_type "software"
+	mixer_control "PCM" 
+}
+
+#audio_output {
+#	type		"alsa"
+#	name		"My ALSA Device"
+#	device		"hw:1,0"	# optional
+
+#	mixer_type      "hardware"      # optional
+#	mixer_device	"default"	# optional
+#	mixer_control	"PCM"		# optional
+#	mixer_index	"0"		# optional
+#}
+
+# An example of a httpd output (built-in HTTP streaming server):
+#
+#audio_output {
+#	type		"httpd"
+#	name		"My HTTP Stream"
+#	encoder		"vorbis"		# optional, vorbis or lame
+#	port		"8000"
+#	bind_to_address "0.0.0.0"               # optional, IPv4 or IPv6
+#	quality		"5.0"			# do not define if bitrate is defined
+#	bitrate		"128"			# do not define if quality is defined
+#	format		"44100:16:1"
+#	max_clients     "0"                     # optional 0=no limit
+#}
+
+filesystem_charset		"UTF-8"
+
+id3v1_encoding			"UTF-8"
+
