@@ -26,9 +26,30 @@ client.on('system-player', function() {
 var nr=33;
 setInterval(function(){
 	nr++;
-	client.sendCommand(cmd("play", [nr]), function(err, msg) {
-		if (err) throw err;
-		console.log(msg);
-		console.log('--------Interval cmd=',nr);
-	});
+	//client.sendCommand(cmd("play", [nr]), 
+	client.sendCommand(cmd("currentsong", []), 
+	
+		function(err, msg) {
+			if (err) throw err;
+			console.log('\n\n--------Interval cmd=',nr);
+			console.log(typeof(msg));
+			console.log(msg);
+			var arr = msg.split("\n");
+			console.log(typeof(arr));
+			console.log(arr);
+			var info ={}
+			for (var k in arr){
+				if (arr[k]){
+					var inf = arr[k].split(": ");
+					info[inf[0]] = (inf[1]);
+				}
+			}
+			console.log(info);
+			console.log('.................................................');
+			console.log(info.Artist, ':: ',info.Album , ': ',info.Title , '\n# ',info.file );
+			console.log('.................................................');
+		});
 },15000);
+
+
+
