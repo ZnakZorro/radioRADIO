@@ -11,7 +11,7 @@ mpc load radio
 sleep 1
 echo " "
 echo "Add Music/muzyka ......."
-mpc add /home/pi/Music/muzyka/
+mpc add /home/pi/Music/muzyka/*
 sleep 5
 echo " "
 echo "Save mpc.m3u ......."
