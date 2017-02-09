@@ -77,9 +77,6 @@
 	"title": "1-FM",
 	"stream": "http://sc-sjazz.1.fm:9010"
 }, {
-	"title": "Reprises",
-	"stream": "http://reprises.ice.infomaniak.ch/reprises-high.mp3"
-}, {
 	"title": "SM Utah",
 	"stream": "http://208.65.0.55:8000/kwbr"
 }, {
