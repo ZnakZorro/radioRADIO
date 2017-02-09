@@ -1,10 +1,10 @@
 [{
+	"title": "TOK FM 48p",
+	"stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg"
+}, {
 	"title": "RMF Classic",
 	"stream": "http://31.192.216.5:8000/rmf_classic"
 }, {
-	"title": "TOK FM 48p",
-	"stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg"
-},  {
 	"title": "Jedynka",
 	"stream": "http://stream3.polskieradio.pl:8900/"
 }, {
