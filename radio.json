@@ -4,10 +4,7 @@
 }, {
 	"title": "TOK FM 48p",
 	"stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg"
-}, {
-	"title": "TOK FM 41g",
-	"stream": "http://gdansk1-1.radio.pionier.net.pl:8000/pl/tuba10-1.mp3"
-}, {
+},  {
 	"title": "Jedynka",
 	"stream": "http://stream3.polskieradio.pl:8900/"
 }, {
@@ -79,9 +76,6 @@
 }, {
 	"title": "1-FM",
 	"stream": "http://sc-sjazz.1.fm:9010"
-}, {
-	"title": "Seabreez",
-	"stream": "http://i1.stretchinternet.com:8000/wsbz"
 }, {
 	"title": "Reprises",
 	"stream": "http://reprises.ice.infomaniak.ch/reprises-high.mp3"
