@@ -22,5 +22,6 @@
 {"title": "1-FM","stream": "http://sc-sjazz.1.fm:9010"},
 {"title": "SM Utah","stream": "http://208.65.0.55:8000/kwbr"},
 {"title": "Calm Chorale","stream": "http://184.173.142.117:18828/stream"},
-{"title": "Choral Minesota","stream": "http://choral.stream.publicradio.org/choral.mp3"}
+{"title": "Choral Minesota","stream": "http://choral.stream.publicradio.org/choral.mp3"},
+  {"title":"Koncerty w 3","stream":"http://stream3.polskieradio.pl:8410/"}
 ]
