@@ -9,6 +9,9 @@
 {"title": "Sz-n FM","stream": "http://stream3.nadaje.com:8200/szczecinfm"},
 {"title": "Złote","stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"},
 {"title":"Smoothjazz.com.pl","stream":"http://stream4.nadaje.com:11416/;"},
+{"title": "SmoothCom","stream": "http://sj256.hnux.com"},
+{"title": "Smooth97","stream": "http://janus.cdnstream.com:5014/"},
+{"title": "Sax4ever","stream": "http://sc-sax4ever.1.fm:10148/"},
 {"title": "Sax","stream": "http://streaming.radionomy.com/Sax4Love"},
 {"title": "VIENNA","stream": "http://184.173.142.117:13928/stream"},
 {"title": "Illinois Str","stream": "http://ice2.somafm.com/illstreet-128-mp3"},
@@ -18,9 +21,6 @@
 {"title": "Best UK","stream": "http://64.95.243.43:8002/"},
 {"title": "1-FM","stream": "http://sc-sjazz.1.fm:9010"},
 {"title": "SM Utah","stream": "http://208.65.0.55:8000/kwbr"},
-{"title": "SmoothCom","stream": "http://sj256.hnux.com"},
-{"title": "Smooth97","stream": "http://janus.cdnstream.com:5014/"},
-{"title": "Sax4ever","stream": "http://sc-sax4ever.1.fm:10148/"},
 {"title": "Calm Chorale","stream": "http://184.173.142.117:18828/stream"},
 {"title": "Chorale 3","stream": "http://choral.stream.publicradio.org/choral.mp3"}
 ]
