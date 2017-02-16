@@ -8,7 +8,7 @@
 {"title": "Sz-n PR","stream": "http://stream4.nadaje.com:11986/prs.aac"},
 {"title": "Sz-n FM","stream": "http://stream3.nadaje.com:8200/szczecinfm"},
 {"title": "Złote","stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"},
-{"title": "SmoothPL","stream": "http://stream.polskastacja.pl/ps37"},
+{"title":"Smoothjazz.com.pl","stream":"http://stream4.nadaje.com:11416/;"},
 {"title": "Sax","stream": "http://streaming.radionomy.com/Sax4Love"},
 {"title": "VIENNA","stream": "http://184.173.142.117:13928/stream"},
 {"title": "Baroque","stream": "http://8.38.78.173:8272/;mp3"},
@@ -28,6 +28,5 @@
 {"title": "Smooth97","stream": "http://janus.cdnstream.com:5014/"},
 {"title": "Sax4ever","stream": "http://sc-sax4ever.1.fm:10148/"},
 {"title": "Calm Chorale","stream": "http://184.173.142.117:18828/stream"},
-{"title": "Chorale 3","stream": "http://choral.stream.publicradio.org/choral.mp3"},
-{"title":"Smoothjazz.com.pl","stream":"http://stream4.nadaje.com:11416/;"}
+{"title": "Chorale 3","stream": "http://choral.stream.publicradio.org/choral.mp3"}
 ]
