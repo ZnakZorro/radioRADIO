@@ -1,99 +1,36 @@
-[{
-	"title": "TOK FM 48p",
-	"stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg"
-}, {
-	"title": "RMF Classic",
-	"stream": "http://31.192.216.5:8000/rmf_classic"
-}, {
-	"title": "Jedynka",
-	"stream": "http://stream3.polskieradio.pl:8900/"
-}, {
-	"title": "Dwójka",
-	"stream": "http://stream3.polskieradio.pl:8902/"
-}, {
-	"title": "Trójka",
-	"stream": "http://stream3.polskieradio.pl:8904/"
-}, {
-	"title": "Czwórka",
-	"stream": "http://stream3.polskieradio.pl:8906/"
-}, {
-	"title": "Sz-n PR",
-	"stream": "http://stream4.nadaje.com:11986/prs.aac"
-}, {
-	"title": "Sz-n FM",
-	"stream": "http://stream3.nadaje.com:8200/szczecinfm"
-}, {
-	"title": "Złote",
-	"stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"
-}, {
-	"title": "SmoothPL",
-	"stream": "http://stream.polskastacja.pl/ps37"
-}, {
-	"title": "LoungePL",
-	"stream": "http://stream.polskastacja.pl/ps69"
-}, {
-	"title": "LoungeLove",
-	"stream": "http://stream1.ml1.t4e.dj:80/loungelovers_high.mp3"
-}, {
-	"title": "Sax",
-	"stream": "http://streaming.radionomy.com/Sax4Love"
-}, {
-	"title": "VIENNA",
-	"stream": "http://184.173.142.117:13928/stream"
-}, {
-	"title": "Baroque",
-	"stream": "http://8.38.78.173:8272/;mp3"
-}, {
-	"title": "Classic",
-	"stream": "http://8.38.78.173:8274/;mp3"
-}, {
-	"title": "Jazz",
-	"stream": "http://8.38.78.173:8276/;mp3"
-}, {
-	"title": "Lounge",
-	"stream": "http://8.38.78.173:8278/;mp3"
-}, {
-	"title": "Rock",
-	"stream": "http://8.38.78.173:8280/"
-}, {
-	"title": "Live",
-	"stream": "http://8.38.78.173:8156/"
-}, {
-	"title": "Illinois Str",
-	"stream": "http://ice2.somafm.com/illstreet-128-mp3"
-}, {
-	"title": "U80",
-	"stream": "http://ice1.somafm.com/u80s-256-mp3"
-}, {
-	"title": "U70",
-	"stream": "http://ice2.somafm.com/seventies-320-mp3"
-}, {
-	"title": "EleJazz",
-	"stream": "http://ice1.somafm.com/sonicuniverse-192-mp3"
-}, {
-	"title": "Best UK",
-	"stream": "http://64.95.243.43:8002/"
-}, {
-	"title": "1-FM",
-	"stream": "http://sc-sjazz.1.fm:9010"
-}, {
-	"title": "SM Utah",
-	"stream": "http://208.65.0.55:8000/kwbr"
-}, {
-	"title": "SmoothCom",
-	"stream": "http://sj256.hnux.com"
-}, {
-	"title": "Smooth97",
-	"stream": "http://janus.cdnstream.com:5014/"
-}, {
-	"title": "Sax4ever",
-	"stream": "http://sc-sax4ever.1.fm:10148/"
-}, {
-	"title": "Calm Chorale",
-	"stream": "http://184.173.142.117:18828/stream"
-}, {
-	"title": "Chorale 3",
-	"stream": "http://choral.stream.publicradio.org/choral.mp3"
-},{"title":"Smoothjazz.com.pl","stream":"http://stream4.nadaje.com:11416/;"},
- {"title":"radio4-film","stream":"http://icecast.omroep.nl:80/radio4-film-bb-mp3"}
+[
+{"title": "TOK FM 48p","stream": "http://poznan5-1.radio.pionier.net.pl:8000/radiotok.ogg"},
+{"title": "RMF Classic","stream": "http://31.192.216.5:8000/rmf_classic"},
+{"title": "Jedynka","stream": "http://stream3.polskieradio.pl:8900/"},
+{"title": "Dwójka","stream": "http://stream3.polskieradio.pl:8902/"},
+{"title": "Trójka","stream": "http://stream3.polskieradio.pl:8904/"},
+{"title": "Czwórka","stream": "http://stream3.polskieradio.pl:8906/"},
+{"title": "Sz-n PR","stream": "http://stream4.nadaje.com:11986/prs.aac"},
+{"title": "Sz-n FM","stream": "http://stream3.nadaje.com:8200/szczecinfm"},
+{"title": "Złote","stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"},
+{"title": "SmoothPL","stream": "http://stream.polskastacja.pl/ps37"},
+//{"title": "LoungePL","stream": "http://stream.polskastacja.pl/ps69"},
+//{"title": "LoungeLove","stream": "http://stream1.ml1.t4e.dj:80/loungelovers_high.mp3"},
+{"title": "Sax","stream": "http://streaming.radionomy.com/Sax4Love"},
+{"title": "VIENNA","stream": "http://184.173.142.117:13928/stream"},
+{"title": "Baroque","stream": "http://8.38.78.173:8272/;mp3"},
+{"title": "Classic","stream": "http://8.38.78.173:8274/;mp3"},
+{"title": "Jazz","stream": "http://8.38.78.173:8276/;mp3"},
+{"title": "Lounge","stream": "http://8.38.78.173:8278/;mp3"},
+{"title": "Rock","stream": "http://8.38.78.173:8280/"},
+{"title": "Live","stream": "http://8.38.78.173:8156/"},
+{"title": "Illinois Str","stream": "http://ice2.somafm.com/illstreet-128-mp3"},
+{"title": "U80","stream": "http://ice1.somafm.com/u80s-256-mp3"},
+{"title": "U70","stream": "http://ice2.somafm.com/seventies-320-mp3"},
+{"title": "EleJazz","stream": "http://ice1.somafm.com/sonicuniverse-192-mp3"},
+{"title": "Best UK","stream": "http://64.95.243.43:8002/"},
+{"title": "1-FM","stream": "http://sc-sjazz.1.fm:9010"},
+{"title": "SM Utah","stream": "http://208.65.0.55:8000/kwbr"},
+{"title": "SmoothCom","stream": "http://sj256.hnux.com"},
+{"title": "Smooth97","stream": "http://janus.cdnstream.com:5014/"},
+{"title": "Sax4ever","stream": "http://sc-sax4ever.1.fm:10148/"},
+{"title": "Calm Chorale","stream": "http://184.173.142.117:18828/stream"},
+{"title": "Chorale 3","stream": "http://choral.stream.publicradio.org/choral.mp3"},
+{"title":"Smoothjazz.com.pl","stream":"http://stream4.nadaje.com:11416/;"},
+
 ]
