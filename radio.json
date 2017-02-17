@@ -24,12 +24,13 @@
   {"title": "Calm Chorale","stream": "http://184.173.142.117:18828/stream"},
   {"title": "Choral Minesota","stream": "http://choral.stream.publicradio.org/choral.mp3"},
   {"title":"Koncerty w 3","stream":"http://stream3.polskieradio.pl:8410/"},
-  {"title":"Najpiekniejsze","stream":"http://mp3.polskieradio.pl:8020/"},
-  {"title":"Pink Floyd ","stream":"http://stream3.polskieradio.pl:8070/"},
   {"title":"MiniMax","stream":"http://mp3.polskieradio.pl:8046/"},
-  {"title":"Ballady","stream":"http://stream3.polskieradio.pl:8074/"},
+  {"title":"Pink Floyd stream","stream":"http://stream3.polskieradio.pl:8070/"},
+  {"title":"Pink Floyd mp3","stream":"http://mp3.polskieradio.pl:8070/"},
   {"title":"Led Zeppelin","stream":"http://stream3.polskieradio.pl:8068/"},
   {"title":"Muzyka żródeł","stream":"http://stream3.polskieradio.pl:8158/"},
   {"title":"PRL","stream":"http://stream3.polskieradio.pl:8066/"},
+  {"title":"Ballady","stream":"http://stream3.polskieradio.pl:8074/"},
+  {"title":"Najpiekniejsze","stream":"http://mp3.polskieradio.pl:8020/"},
   {"title":"Radio Cafe 192","stream":"http://panel.nadaje.com:11108/"}
 ]
