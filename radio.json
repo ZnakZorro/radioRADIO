@@ -32,5 +32,7 @@
   {"title":"PRL","stream":"http://stream3.polskieradio.pl:8066/"},
   {"title":"Ballady","stream":"http://stream3.polskieradio.pl:8074/"},
   {"title":"Najpiekniejsze","stream":"http://mp3.polskieradio.pl:8020/"},
-  {"title":"Radio Cafe 192","stream":"http://panel.nadaje.com:11108/"}
+  {"title":"Radio Cafe 192","stream":"http://panel.nadaje.com:11108/"},
+  {"title":"Ptasie radio","stream":"http://stream.open.fm/52"}
+  
 ]
