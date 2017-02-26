@@ -8,6 +8,8 @@
 {"title": "Sz-n PR","stream": "http://stream4.nadaje.com:11986/prs.aac"},
 {"title": "Sz-n FM","stream": "http://stream3.nadaje.com:8200/szczecinfm"},
 {"title": "Złote","stream": "http://mainstream.radioagora.pl/tuba9-1.mp3"},
+  {"title":"Radio Baobab","stream":"http://stream10.radioagora.pl:80/tuba22-1.mp3"},
+  {"title":"TOP Tuba","stream":"http://stream10.radioagora.pl:80/tuba39-1.mp3"},
 {"title":"Smoothjazz.com.pl","stream":"http://stream4.nadaje.com:11416/;"},
 {"title": "SmoothCom","stream": "http://sj256.hnux.com"},
 {"title": "Smooth97","stream": "http://janus.cdnstream.com:5014/"},
@@ -33,6 +35,6 @@
   {"title":"Ballady","stream":"http://stream3.polskieradio.pl:8074/"},
   {"title":"Najpiekniejsze","stream":"http://mp3.polskieradio.pl:8020/"},
   {"title":"Radio Cafe 192","stream":"http://panel.nadaje.com:11108/"},
-  {"title":"Ptasie radio","stream":"http://stream.open.fm/52"}
-  
+  {"title":"Ptasie radio","stream":"http://stream.open.fm/52"},
+  {"title":"Kotek.fm","stream":"http://stream10.radioagora.pl:80/tuba30-1.mp3"}  
 ]
