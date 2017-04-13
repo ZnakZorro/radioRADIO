@@ -40,5 +40,7 @@
 {"title":"Kotek.fm","stream":"http://stream10.radioagora.pl:80/tuba30-1.mp3"}, 
   {"title":"smooth.jazz.com.pl","stream":"http://94.23.95.213:8034"}, 
   {"title":"chilout","stream":"http://panel.nadaje.com:9004"}, 
-{"title":"Ptasie radio","stream":"http://stream.open.fm/52"}
+{"title":"Ptasie radio","stream":"http://stream.open.fm/52"},
+  {"title":"Muzofm","stream":"http://stream4.nadaje.com/muzo"}
+  
 ]
