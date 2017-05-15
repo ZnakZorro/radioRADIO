@@ -1,0 +1,495 @@
+
+http://195.150.20.242:8000/rmf_fm
+http://195.150.20.242:8000/rmf_maxxx
+
+http://195.150.20.242:8000/rmf_2
+http://195.150.20.242:8000/rmf_3
+http://195.150.20.242:8000/rmf_4
+http://195.150.20.242:8000/rmf_5
+http://195.150.20.242:8000/best_of_rmfon
+http://195.150.20.242:8000/rmf_chopin
+http://195.150.20.242:8000/rmf_chillout
+http://195.150.20.242:8000/rmf_niezapomniane_melodie
+
+
+http://195.150.20.242:8000/rmf_classic
+http://195.150.20.242:8000/rmf_baby
+http://195.150.20.242:8000/audiobook
+
+
+[{
+	"id": "5",
+	"idname": "rmf",
+	"slug": "rmf_fm",
+	"name": "RMF FM"
+}, {
+	"id": "6",
+	"idname": "maxxx",
+	"slug": "rmf_maxxx",
+	"name": "RMF MAXXX"
+}, {
+	"id": "7",
+	"idname": "classic",
+	"slug": "rmf_classic",
+	"name": "RMF Classic"
+}, {
+	"id": "112",
+	"idname": "bestofrmfon",
+	"slug": "best_of_rmfon",
+	"name": "Best of RMFON"
+}, {
+	"id": "94",
+	"idname": "rmf2",
+	"slug": "rmf_2",
+	"name": "RMF 2 Pop"
+}, {
+	"id": "95",
+	"idname": "rmf3",
+	"slug": "rmf_3",
+	"name": "RMF 3 Pop_Rock"
+}, {
+	"id": "96",
+	"idname": "rmf4",
+	"slug": "rmf_4",
+	"name": "RMF 4 Dance &amp; RNB"
+}, {
+	"id": "97",
+	"idname": "rmf5",
+	"slug": "rmf_5",
+	"name": "RMF 5 Łagodne Przeboje"
+}, {
+	"id": "149",
+	"idname": "radiofonia",
+	"slug": "radiofonia",
+	"name": "Radiofonia????????????????????"
+}, {
+	"id": "82",
+	"idname": "20lat",
+	"slug": "20lat_rmf_fm",
+	"name": "25 lat RMF FM??????????????????????????"
+}, {
+	"id": "48",
+	"idname": "50s",
+	"slug": "rmf_50s",
+	"name": "RMF 50s"
+}, {
+	"id": "147",
+	"idname": "50style",
+	"slug": "50style",
+	"name": "50 style music????????????????"
+}, {
+	"id": "44",
+	"idname": "60s",
+	"slug": "rmf_60s",
+	"name": "RMF 60s"
+}, {
+	"id": "45",
+	"idname": "70s",
+	"slug": "rmf_70s",
+	"name": "RMF 70s"
+}, {
+	"id": "108",
+	"idname": "70sdisco",
+	"slug": "rmf_70s_disco",
+	"name": "RMF 70s disco"
+}, {
+	"id": "25",
+	"idname": "80s",
+	"slug": "rmf_80s",
+	"name": "RMF 80s"
+}, {
+	"id": "109",
+	"idname": "80sdisco",
+	"slug": "rmf_80s_disco",
+	"name": "RMF 80s disco"
+}, {
+	"id": "46",
+	"idname": "90s",
+	"slug": "rmf_90s",
+	"name": "RMF 90s"
+}, {
+	"id": "130",
+	"idname": "90sdance",
+	"slug": "rmf_90s_dance",
+	"name": "RMF 90s dance"
+}, {
+	"id": "81",
+	"idname": "2000",
+	"slug": "rmf_2000",
+	"name": "RMF 2000"
+}, {
+	"id": "159",
+	"idname": "2010",
+	"slug": "rmf_2010",
+	"name": "RMF 2010"
+}, {
+	"id": "28",
+	"idname": "alternatywa",
+	"slug": "rmf_alternatywa",
+	"name": "RMF Alternatywa"
+}, {
+	"id": "43",
+	"idname": "baby",
+	"slug": "rmf_baby",
+	"name": "RMF Baby"
+}, {
+	"id": "154",
+	"idname": "bajki",
+	"slug": "audiobook",
+	"name": "Audiobook dla dzieci"
+}, {
+	"id": "39",
+	"idname": "blues",
+	"slug": "rmf_blues",
+	"name": "RMF Blues"
+}, {
+	"id": "77",
+	"idname": "beatlemania",
+	"slug": "rmf_beatlemania",
+	"name": "RMF Beatlemania"
+}, {
+	"id": "12",
+	"idname": "bravo",
+	"slug": "rmf_bravo",
+	"name": "RMF Bravo"
+}, {
+	"id": "11",
+	"idname": "chillout",
+	"slug": "rmf_chillout",
+	"name": "RMF Chillout"
+}, {
+	"id": "67",
+	"idname": "celtic",
+	"slug": "rmf_celtic",
+	"name": "RMF Celtic"
+}, {
+	"id": "85",
+	"idname": "chopin",
+	"slug": "rmf_chopin",
+	"name": "RMF Chopin"
+}, {
+	"id": "2",
+	"idname": "classicrock",
+	"slug": "rmf_classic_rock",
+	"name": "RMF Classic rock"
+}, {
+	"id": "29",
+	"idname": "club",
+	"slug": "rmf_club",
+	"name": "RMF Club"
+}, {
+	"id": "53",
+	"idname": "cuba",
+	"slug": "rmf_cuba",
+	"name": "RMF Cuba"
+}, {
+	"id": "3",
+	"idname": "dance",
+	"slug": "rmf_dance",
+	"name": "RMF Dance"
+}, {
+	"id": "31",
+	"idname": "depechemode",
+	"slug": "rmf_depeche_mode",
+	"name": "RMF Depeche Mode"
+}, {
+	"id": "153",
+	"idname": "disco",
+	"slug": "rmf_disco",
+	"name": "RMF Disco"
+}, {
+	"id": "117",
+	"idname": "fitness",
+	"slug": "rmf_fitness",
+	"name": "RMF Fitness"
+}, {
+	"id": "118",
+	"idname": "fitnessrock",
+	"slug": "rmf_fitness_rock",
+	"name": "RMF Fitness rock"
+}, {
+	"id": "54",
+	"idname": "francais",
+	"slug": "rmf_francais",
+	"name": "RMF Francais"
+}, {
+	"id": "160",
+	"idname": "funk",
+	"slug": "rmf_funk",
+	"name": "RMF Funk"
+}, {
+	"id": "156",
+	"idname": "gamemusic",
+	"slug": "rmf_gamemusic",
+	"name": "RMF GameMusic"
+}, {
+	"id": "15",
+	"idname": "gold",
+	"slug": "rmf_gold",
+	"name": "RMF Gold"
+}, {
+	"id": "64",
+	"idname": "groove",
+	"slug": "rmf_groove",
+	"name": "RMF Groove"
+}, {
+	"id": "68",
+	"idname": "grunge",
+	"slug": "rmf_grunge",
+	"name": "RMF Grunge"
+}, {
+	"id": "32",
+	"idname": "hardheavy",
+	"slug": "rmf_hard_and_heavy",
+	"name": "RMF Hard &amp; heavy"
+}, {
+	"id": "37",
+	"idname": "hiphop",
+	"slug": "rmf_hip_hop",
+	"name": "RMF Hip hop"
+}, {
+	"id": "27",
+	"idname": "hotnew",
+	"slug": "rmf_hot_new",
+	"name": "RMF Hot new"
+}, {
+	"id": "80",
+	"idname": "koledy",
+	"slug": "rmf_koledy",
+	"name": "RMF Kolędy"
+}, {
+	"id": "30",
+	"idname": "ladypank",
+	"slug": "rmf_lady_pank",
+	"name": "RMF Lady Pank"
+}, {
+	"id": "14",
+	"idname": "love",
+	"slug": "rmf_love",
+	"name": "RMF LOVE"
+}, {
+	"id": "22",
+	"idname": "hopbec",
+	"slug": "rmf_hopbec",
+	"name": "RMF MAXXX Hop bęc"
+}, {
+	"id": "73",
+	"idname": "michaeljackson",
+	"slug": "rmf_jackson",
+	"name": "RMF Michael Jackson"
+}, {
+	"id": "33",
+	"idname": "filmowa",
+	"slug": "rmf_muzyka_filmowa",
+	"name": "RMF Muzyka filmowa"
+}, {
+	"id": "86",
+	"idname": "klasyczna",
+	"slug": "rmf_muzyka_klasyczna",
+	"name": "RMF Muzyka klasyczna"
+}, {
+	"id": "161",
+	"idname": "latino",
+	"slug": "rmf_latino",
+	"name": "RMF Latino"
+}, {
+	"id": "127",
+	"idname": "npp",
+	"slug": "rmf_najwieksze_polskie_przeboje_rmf_on",
+	"name": "Największe polskie przeboje??????????????"
+}, {
+	"id": "111",
+	"idname": "niezapomnianemelodie",
+	"slug": "rmf_niezapomniane_melodie",
+	"name": "RMF Niezapomniane melodie"
+}, {
+	"id": "93",
+	"idname": "nostalgia",
+	"slug": "rmf_nostalgia",
+	"name": "RMF Ballady"
+}, {
+	"id": "23",
+	"idname": "party",
+	"slug": "rmf_party",
+	"name": "RMF Party"
+}, {
+	"id": "166",
+	"idname": "rmfpiosenkafilmowa",
+	"slug": "rmf_piosenka_filmowa",
+	"name": "RMF Piosenka filmowa"
+}, {
+	"id": "65",
+	"idname": "piosenkaliteracka",
+	"slug": "rmf_piosenka_literacka",
+	"name": "RMF Piosenka literacka"
+}, {
+	"id": "165",
+	"idname": "rmfpobudka",
+	"slug": "rmf_pobudka",
+	"name": "RMF Pobudka"
+}, {
+	"id": "164",
+	"idname": "polskaprywatka",
+	"slug": "rmf_polska_prywatka",
+	"name": "RMF Polska prywatka"
+}, {
+	"id": "52",
+	"idname": "polskihiphop",
+	"slug": "rmf_polski_hip_hop",
+	"name": "RMF Polski hip hop"
+}, {
+	"id": "36",
+	"idname": "polskirock",
+	"slug": "rmf_polski_rock",
+	"name": "RMF Polski rock"
+}, {
+	"id": "110",
+	"idname": "polskiedisco",
+	"slug": "rmf_polskie_disco",
+	"name": "RMF Disco polo"
+}, {
+	"id": "9",
+	"idname": "pprzeboje",
+	"slug": "rmf_polskie_przeboje",
+	"name": "RMF Polskie przeboje"
+}, {
+	"id": "8",
+	"idname": "poplista",
+	"slug": "rmf_poplista",
+	"name": "RMF Poplista"
+}, {
+	"id": "38",
+	"idname": "prl",
+	"slug": "rmf_prl",
+	"name": "RMF PRL"
+}, {
+	"id": "19",
+	"idname": "przebojroku",
+	"slug": "rmf_przeboj_roku",
+	"name": "RMF Przebój roku"
+}, {
+	"id": "61",
+	"idname": "queen",
+	"slug": "rmf_queen",
+	"name": "RMF Queen"
+}, {
+	"id": "40",
+	"idname": "reggae",
+	"slug": "rmf_reggae",
+	"name": "RMF Reggae"
+}, {
+	"id": "4",
+	"idname": "rnb",
+	"slug": "rmf_rnb",
+	"name": "RMF R&amp;B"
+}, {
+	"id": "116",
+	"idname": "relaks",
+	"slug": "rmf_relaks",
+	"name": "RMF Relaks"
+}, {
+	"id": "1",
+	"idname": "rock",
+	"slug": "rmf_rock",
+	"name": "RMF Rock"
+}, {
+	"id": "84",
+	"idname": "progrock",
+	"slug": "rmf_rock_progresywny",
+	"name": "RMF Rock progresywny"
+}, {
+	"id": "148",
+	"idname": "sizeer",
+	"slug": "sizeer_fm",
+	"name": "Sizeer FM"
+}, {
+	"id": "10",
+	"idname": "sloneczneprzeboje",
+	"slug": "rmf_sloneczne_przeboje",
+	"name": "RMF Słoneczne przeboje"
+}, {
+	"id": "16",
+	"idname": "smoothjazz",
+	"slug": "rmf_smooth_jazz",
+	"name": "RMF Smooth jazz"
+}, {
+	"id": "163",
+	"idname": "studenckaimpreza",
+	"slug": "rmf_studencka_impreza",
+	"name": "RMF Studencka impreza"
+}, {
+	"id": "79",
+	"idname": "styl",
+	"slug": "rmf_styl",
+	"name": "RMF Styl"
+}, {
+	"id": "146",
+	"idname": "symbiosis",
+	"slug": "rmf_symbiosis",
+	"name": "Symbiosis...sound"
+}, {
+	"id": "49",
+	"idname": "szanty",
+	"slug": "rmf_szanty",
+	"name": "RMF Szanty"
+}, {
+	"id": "17",
+	"idname": "swieta",
+	"slug": "rmf_swieta",
+	"name": "RMF Święta"
+}, {
+	"id": "137",
+	"idname": "teksciory",
+	"slug": "rmf_teksciory",
+	"name": "RMF Tekściory"
+}, {
+	"id": "119",
+	"idname": "top5dance",
+	"slug": "rmf_top_5_dance",
+	"name": "RMF Top 30 dance"
+}, {
+	"id": "122",
+	"idname": "top5rnb",
+	"slug": "rmf_top_5_rnb",
+	"name": "RMF Top 30 disco polo"
+}, {
+	"id": "120",
+	"idname": "top5pl",
+	"slug": "rmf_top_5_pl",
+	"name": "RMF Top 30 pl"
+}, {
+	"id": "121",
+	"idname": "top5pop",
+	"slug": "rmf_top_5_pop",
+	"name": "RMF Top 30 pop"
+}, {
+	"id": "123",
+	"idname": "top5rock",
+	"slug": "rmf_top_5_rock",
+	"name": "RMF Top 30 rock"
+}, {
+	"id": "128",
+	"idname": "top30swieta",
+	"slug": "rmf_top_30_swieta",
+	"name": "RMF Top 30 święta"
+}, {
+	"id": "158",
+	"idname": "trendsounds",
+	"slug": "rmf_trendsounds",
+	"name": "RMF Trend sounds"
+}, {
+	"id": "115",
+	"idname": "wpracy",
+	"slug": "rmf_w_pracy",
+	"name": "RMF w pracy"
+}, {
+	"id": "152",
+	"idname": "radiogra",
+	"slug": "radiogra",
+	"name": "Radio Gra Toruń"
+}, {
+	"id": "162",
+	"idname": "radiograwroclaw",
+	"slug": "radiograwroclaw",
+	"name": "Radio Gra Wrocław"
+}]
