@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>theFile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+
+<style>
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+</style>
+
+<input type="file" id="files" name="files[]" multiple />
+<br /><br /><br />
+<pre id="list"></pre>
+
+<script>
+
+
+function makeBat(tx){
+	//console.log(tx);
+	var arr= tx.split("\n");
+	console.log(arr.length);
+	arr.sort(function() {return .5 - Math.random();});
+	arr.sort(function() {return .5 - Math.random();});
+	var ile = arr.length;
+	var max = 50;
+	
+	arr.forEach(function(l,x){
+		if(l){
+			var dir = '000'+(Math.ceil(x / max))+'0';
+			dir = dir.slice(-4);
+			dir='1\\'+dir;
+			//console.log(dir,x,ile,l);
+				var name = l.trim();
+				var newname = name.split("\\").pop();
+				var span = document.createElement('span');
+				span.innerHTML = 'mkdir "'+dir+'"'+"\n";
+				span.innerHTML += 'copy "'+name+'" "'+dir+'\\'+newname+'"'+"\n\n";
+				document.getElementById('list').insertBefore(span, null);		  
+
+		}
+	})
+}
+
+
+
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+	console.log(f.type);
+      // Only process image files.
+      if (!f.type.match('text.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          console.log(theFile);
+          makeBat(e.target.result);
+		  
+        //var span = document.createElement('span');
+          //span.innerHTML = ['x'].join('');
+          //document.getElementById('list').insertBefore(span, null);		  
+		  
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsText(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
