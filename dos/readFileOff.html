@@ -11,8 +11,7 @@
 	.thumb {
 		height: 128px;
 		border: 1px solid #000;
-		margin: 1em 5px 0 0;
-		float: left;
+		margin: 0.5em 0;
 	}
 	
 	#drop_zone {
@@ -27,11 +26,11 @@
 		color: #666;
 		background:#ccc;
 	}
-	.container {padding:1em; margin:1em; background:#eee;clear: both;}
+	.container {padding:0.5em; background:#eee;clear: both;}
 
 	p span:first-child {display:inline-block; min-width:8em; color:navy;}
 	p span:nth-child(2) {font-family: monospace;}
-	input[type="file" i] {font-size:1.25em;}
+	button,input[type="file" i] {font-size:1.05em;}
 </style>
 
 <script src="offDropFile.js"></script>
@@ -50,6 +49,28 @@
 	<div class="container" style="background:initial;">
 		<div id="info" style="background:#fff;"></div>
 		<div id="icon" style="background:#fff;"></div>
+		<div id="buttons" style="background:#fff;">
+			<button onClick="reload()">Reload</button>
+			<button onClick="nagative()">Negative</button>
+			<button onClick="lighter()">Lighter</button>
+			<button onClick="darker()">Darker</button>
+			<button onClick="grayscale()">grayscale</button>
+			<button onClick="threshold(192)">threshold 192</button>
+			<button onClick="threshold(128)">threshold 128</button>
+			<button onClick="threshold(64)">threshold 64</button>
+			<button onClick="threshold(32)">threshold 32</button>
+			<button onClick="reload()">Reload</button>
+			<button onClick="sharpen()">Sharpen</button>
+			<button onClick="imgMan.blur()">Blur</button>
+			<button onClick="imgMan.vertical()">Vertical</button>
+			<button onClick="imgMan.horizontal()">horizontal</button>
+			
+			
+			
+		</div>
+		
+	</div>
+	<div class="container" style="background:initial;">
 		<canvas id="myCanvas" width="200" height="200" style="border:1px solid gray; background:#ddd;"></canvas>
 	</div>
 
@@ -94,6 +115,16 @@ function textFormat(f){
 
 
 // IMG IMG IMG IMG IMG IMG IMG IMG IMG IMG IMG IMG 
+function sharpen(){imgMan.sharpen();}
+
+function reload(){imgMan.reload();}
+function nagative(){imgMan.negative();}
+function lighter(){imgMan.lighter();}
+function darker(){imgMan.darker();}
+function grayscale(){imgMan.grayscale();}
+function threshold(t){imgMan.threshold(null,null,t);}
+
+
 function imageFormat(f){
 	addInfo(f);
 	var img = new Image();
@@ -110,27 +141,21 @@ function imageFormat(f){
           //document.getElementById('icon').insertBefore(span, null);
           document.getElementById('icon').innerHTML = span.innerHTML;
 		  //document.getElementById('icon').appendChild(span);
-		  /*cccccccccccccccccc*/
-						///var url = URL.createObjectURL(e.target.result);
-						 
-						var canvas = document.getElementById('myCanvas');
-						img.src = reader.result;
-						//console.log(img.style);
-						//console.log(img.width,img.height);
-						canvas.width  = img.width;
-						canvas.height = img.height;
-						var ctx = canvas.getContext('2d');
-						
-							ctx.clearRect(0, 0, canvas.width, canvas.height);
-							ctx.drawImage(img, 0, 0);
-						
-						var imageData = ctx.getImageData(0, 0, img.width, img.height);
-						
-						
-						//imgMan.negative(ctx,imageData);
-						//imgMan.darker(ctx,imageData);
-						imgMan.lighter(ctx,imageData);
-						
+		  /*cccccccccccccccccc*/						 
+				var canvas = document.getElementById('myCanvas');
+				img.src = reader.result;
+				canvas.width  = img.width;
+				canvas.height = img.height;
+				var ctx = canvas.getContext('2d');
+				
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					ctx.drawImage(img, 0, 0);
+				
+				var imageData = ctx.getImageData(0, 0, img.width, img.height);
+				
+				imgMan._ctx = ctx;
+				imgMan._imageData = imageData;
+				imgMan.load(ctx,imageData);					
 		/*cccccccccccccccccc*/
         };
       })(f);
@@ -199,7 +224,14 @@ function otherFormat(f){
 	dropZone.addEventListener('drop', handleFileSelect, false);
 	dropZone.addEventListener('click', handleFileSelectStart, false);
 	document.getElementById('files').addEventListener('change', handleFileSelect, false);
-  
+
+
+
+
+
+
+
+	
 </script>
 
 </body>
