@@ -1,83 +1,212 @@
 <html>
 <head>
-<title>theFile</title>
+<title>OffDropFile</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
 <meta name="mobile-web-app-capable" content="yes">
+<link rel="shortcut icon" href="data:image/png;base64,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" id="shortcut-icon">
 
 <style>
-  .thumb {
-    height: 75px;
-    border: 1px solid #000;
-    margin: 10px 5px 0 0;
-  }
-</style>
+	body {font:normal 1em Verdana; margin:0; padding:0;}
+	.thumb {
+		height: 90px;
+		border: 1px solid #000;
+		margin: 1em 5px 0 0;
+		float: left;
+	}
+	
+	#drop_zone {
+		cursor: pointer;
+		font-size:2em;
+		border: 4px dashed #999;
+		-moz-border-radius: 1em;
+		-webkit-border-radius: 1em;
+		border-radius: 1em;
+		padding: 1.25em;
+		text-align: center;
+		color: #666;
+		background:#ccc;
+	}
+	.container {padding:1em; margin:1em; background:#eee;}
 
-<input type="file" id="files" name="files[]" multiple />
-<br /><br /><br />
-<pre id="list"></pre>
+	p span:first-child {display:inline-block; min-width:8em; color:navy;}
+	p span:nth-child(2) {font-family: monospace;}
+	input[type="file" i] {font-size:1.25em;}
+</style>
+</head>
+
+<html>
+	<div class="container" style="display:none;">
+		<input type="file" id="files" name="files[]" multiple />
+	</div>
+
+	<div class="container" title="Drag and Drop or Click">
+		<div id="drop_zone">D&D || Click</div>
+	</div>
+
+	<div class="container" style="background:initial;">
+		<div id="info" style="background:#fff;"></div>
+		<div id="icon" style="background:#fff;"></div>
+		<canvas id="myCanvas" width="200" height="200" style="border:1px solid gray; background:#eee;float: left;"></canvas>
+	</div>
 
 <script>
 
-
-function makeBat(tx){
-	//console.log(tx);
-	var arr= tx.split("\n");
-	console.log(arr.length);
-	arr.sort(function() {return .5 - Math.random();});
-	arr.sort(function() {return .5 - Math.random();});
-	var ile = arr.length;
-	var max = 50;
-	
-	arr.forEach(function(l,x){
-		if(l){
-			var dir = '000'+(Math.ceil(x / max))+'0';
-			dir = dir.slice(-4);
-			dir='1\\'+dir;
-			//console.log(dir,x,ile,l);
-				var name = l.trim();
-				var newname = name.split("\\").pop();
-				var span = document.createElement('span');
-				span.innerHTML = 'mkdir "'+dir+'"'+"\n";
-				span.innerHTML += 'copy "'+name+'" "'+dir+'\\'+newname+'"'+"\n\n";
-				document.getElementById('list').insertBefore(span, null);		  
-
-		}
-	})
+function infoFormat(f){
+    var out  = '<p><span><strong>'+ escape(f.name)+ '</strong></span> <span>('+ (f.type || 'n/a') + ')</span> ';
+        out += f.size+ ' bytes;  Last modified: ';
+		out += f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a';
+        out += '</p>';
+	return(out);
 }
 
 
+function addInfo(f){
+    var out  = infoFormat(f);
+	var span = document.createElement('span');
+    span.innerHTML = out;
+	document.getElementById('info').insertAdjacentHTML('afterbegin', out);
+}
 
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
+/************************************************/
 
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
-	console.log(f.type);
-      // Only process image files.
-      if (!f.type.match('text.*')) {
-        continue;
-      }
+// TXT  TXT  TXT  TXT  TXT  TXT  TXT  TXT  TXT 
+function textFormat(f){
+	addInfo(f);
+	var jakiTyp = f.type.split("/");
+     var reader = new FileReader();
 
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
+      reader.onload = (function(f) {
         return function(e) {
-          console.log(theFile);
-          makeBat(e.target.result);
-		  
-        //var span = document.createElement('span');
-          //span.innerHTML = ['x'].join('');
-          //document.getElementById('list').insertBefore(span, null);		  
-		  
+          console.log(e.target.result);		  
         };
       })(f);
+	  
+      reader.readAsText(f);		
+}
+
+
+// IMG IMG IMG IMG IMG IMG IMG IMG IMG IMG IMG IMG 
+function imageFormat(f){
+	addInfo(f);
+	var img = new Image();
+	var reader = new FileReader();
+      // Closure to capture the file information.
+      reader.onload = (function(f) {
+	  //console.log(1);
+        return function(e) {
+		//console.log(e)
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(f.name), '"/>'].join('');
+          //document.getElementById('icon').insertBefore(span, null);
+          document.getElementById('icon').innerHTML = span.innerHTML;
+		  //document.getElementById('icon').appendChild(span);
+		  /*cccccccccccccccccc*/
+						///var url = URL.createObjectURL(e.target.result);
+						 
+						var canvas = document.getElementById('myCanvas');
+						img.src = reader.result;
+						//console.log(img.style);
+						//console.log(img.width,img.height);
+						canvas.width  = img.width;
+						canvas.height = img.height;
+						var ctx = canvas.getContext('2d');
+						
+							ctx.clearRect(0, 0, canvas.width, canvas.height);
+							ctx.drawImage(img, 0, 0);
+						
+						var imageData = ctx.getImageData(0, 0, img.width, img.height);
+						
+						var data = imageData.data;
+						//console.log(data);
+						   for(var i = 0; i < data.length; i += 4) {
+							  // red
+							  data[i] = 255 - data[i];
+							  // green
+							  data[i + 1] = 255 - data[i + 1];
+							  // blue
+							  data[i + 2] = 255 - data[i + 2];
+							}
+
+							// overwrite original image
+							ctx.putImageData(imageData, 0, 0);						
+						
+		/*cccccccccccccccccc*/
+        };
+      })(f);
+	  
+	reader.onloadend = function (f) {
+		return function(e){
+			//console.log(2,e);
+		}
+        
+    }(f);
 
       // Read in the image file as a data URL.
-      reader.readAsText(f);
-    }
-  }
+      reader.readAsDataURL(f);
+    	
+	
+} // !- imageFormat
 
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+function appFormat(f){
+	addInfo(f);
+}
+
+function otherFormat(f){
+	addInfo(f);
+}
+
+
+/************************************************/
+/************************************************/
+	function handleFileSelect(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		var files = null;
+		if (evt.target.files) files = evt.target.files; 
+		else if (evt.dataTransfer.files) files = evt.dataTransfer.files;
+		var output = [];
+		for (var i = 0, f; f = files[i]; i++) {		
+			var jakiTyp = f.type.split("/");
+			switch(jakiTyp[0]) {
+				case 'text':		textFormat(f);	break;
+				case 'application':	appFormat(f);	break;
+				case 'image':		imageFormat(f);	break;
+				default:otherFormat(f);
+			}
+		}
+	}
+/************************************************/
+  
+  
+	function handleDragOver(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		evt.dataTransfer.dropEffect = 'copy';
+	}
+
+	function handleFileSelectStart(evt){
+				var el = document.getElementById('files');
+				el.addEventListener('change', handleFileSelect, false);
+				el.click();
+				//el.focus();
+				//el.blur();
+	}
+	
+	// Setup the dnd listeners.
+	var dropZone = document.getElementById('drop_zone');
+	dropZone.addEventListener('dragover', handleDragOver, false);
+	dropZone.addEventListener('drop', handleFileSelect, false);
+	dropZone.addEventListener('click', handleFileSelectStart, false);
+	document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  
 </script>
+
+</body>
+</html>
+
+<!--
+https://www.html5rocks.com/en/tutorials/file/dndfiles/
+-->
