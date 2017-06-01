@@ -9,7 +9,7 @@
 <style>
 	body {font:normal 1em Verdana; margin:0; padding:0;}
 	.thumb {
-		height: 90px;
+		height: 128px;
 		border: 1px solid #000;
 		margin: 1em 5px 0 0;
 		float: left;
@@ -27,12 +27,15 @@
 		color: #666;
 		background:#ccc;
 	}
-	.container {padding:1em; margin:1em; background:#eee;}
+	.container {padding:1em; margin:1em; background:#eee;clear: both;}
 
 	p span:first-child {display:inline-block; min-width:8em; color:navy;}
 	p span:nth-child(2) {font-family: monospace;}
 	input[type="file" i] {font-size:1.25em;}
 </style>
+
+<script src="offDropFile.js"></script>
+
 </head>
 
 <html>
@@ -47,9 +50,13 @@
 	<div class="container" style="background:initial;">
 		<div id="info" style="background:#fff;"></div>
 		<div id="icon" style="background:#fff;"></div>
-		<canvas id="myCanvas" width="200" height="200" style="border:1px solid gray; background:#eee;float: left;"></canvas>
+		<canvas id="myCanvas" width="200" height="200" style="border:1px solid gray; background:#ddd;"></canvas>
 	</div>
 
+	<div class="container" title="x">
+		
+	</div>
+	
 <script>
 
 function infoFormat(f){
@@ -119,19 +126,10 @@ function imageFormat(f){
 						
 						var imageData = ctx.getImageData(0, 0, img.width, img.height);
 						
-						var data = imageData.data;
-						//console.log(data);
-						   for(var i = 0; i < data.length; i += 4) {
-							  // red
-							  data[i] = 255 - data[i];
-							  // green
-							  data[i + 1] = 255 - data[i + 1];
-							  // blue
-							  data[i + 2] = 255 - data[i + 2];
-							}
-
-							// overwrite original image
-							ctx.putImageData(imageData, 0, 0);						
+						
+						//imgMan.negative(ctx,imageData);
+						//imgMan.darker(ctx,imageData);
+						imgMan.lighter(ctx,imageData);
 						
 		/*cccccccccccccccccc*/
         };
