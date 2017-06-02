@@ -8,6 +8,11 @@
 
 <style>
 	body {font:normal 1em Verdana; margin:0; padding:0;}
+			div.ra {
+				line-height:2em; font-family:monospace; font-size:1.25em; padding:0.25em;
+			}
+
+			
 	.thumb {
 		height: 128px;
 		border: 1px solid #000;
@@ -32,7 +37,7 @@
 	p span:nth-child(2) {font-family: monospace;}
 	button,input[type="file" i] {font-size:1.05em;}
 </style>
-
+<link rel="stylesheet" href="offDropFile.css">
 <script src="offDropFile.js"></script>
 
 </head>
@@ -55,19 +60,18 @@
 			<button onClick="lighter()">Lighter</button>
 			<button onClick="darker()">Darker</button>
 			<button onClick="grayscale()">grayscale</button>
-			<button onClick="threshold(192)">threshold 192</button>
-			<button onClick="threshold(128)">threshold 128</button>
-			<button onClick="threshold(64)">threshold 64</button>
-			<button onClick="threshold(32)">threshold 32</button>
-			<button onClick="reload()">Reload</button>
 			<button onClick="sharpen()">Sharpen</button>
 			<button onClick="imgMan.blur()">Blur</button>
-			<button onClick="imgMan.vertical()">Vertical</button>
-			<button onClick="imgMan.horizontal()">horizontal</button>
-			
-			
-			
+			<button onClick="imgMan.ciach1()">Ciach1</button>
+			<button onClick="imgMan.ciach2()">Ciach2</button>
+			<button onClick="imgMan.ciach3()">Ciach3</button>
+			<button onClick="reload()">Reload</button>
 		</div>
+		<div class="container" style="background:initial;">
+			<div class="ra"><span>Tresh:      </span><input type="range" min="0" max="255" value="128" oninput="showValThresh(this.value)" onChange="threshRange(this.value)" /> <span id ="threshVal">128</span></div>
+			<div class="ra"><span>Zoom: &nbsp;</span><input type="range" min="1" max="20"  value="10"  oninput="showValZoom(this.value)" onChange="zoomRange(this.value)" id="zoomInput"/>   <span id ="zoomVal">1.0</span></div>
+		</div>
+		
 		
 	</div>
 	<div class="container" style="background:initial;">
@@ -79,6 +83,22 @@
 	</div>
 	
 <script>
+function zoomRange(v){
+	
+}
+function showValZoom(v){
+	$('zoomVal').textContent=v/10;
+	$('myCanvas').style.zoom = (v/10);
+}
+
+function threshRange(v){
+	reload();
+	threshold(v);
+}
+function showValThresh(v){
+	$('threshVal').textContent=v;
+}
+
 
 function infoFormat(f){
     var out  = '<p><span><strong>'+ escape(f.name)+ '</strong></span> <span>('+ (f.type || 'n/a') + ')</span> ';
@@ -152,6 +172,13 @@ function imageFormat(f){
 					ctx.drawImage(img, 0, 0);
 				
 				var imageData = ctx.getImageData(0, 0, img.width, img.height);
+						var w = window.innerWidth;
+						var h = window.innerHeight;
+						var zoom = Math.min(w/img.width, h/img.height)*0.9;
+						$('myCanvas').style.zoom = zoom;
+						$('zoomVal').textContent = Math.round(zoom*10)/10;
+						$('zoomInput').value=Math.round(zoom*10);
+						//console.log(zoom,w,img.width, h,img.height,w/img.width, h/img.height);
 				
 				imgMan._ctx = ctx;
 				imgMan._imageData = imageData;
