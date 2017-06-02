@@ -1,3 +1,7 @@
+function $(id){return document.getElementById(id);}
+
+
+
 
 Object.prototype.clone = Array.prototype.clone = function()
 {
@@ -33,9 +37,12 @@ var imgMan={
 	_ctx : null,
 	_imageData : null,
 	__imageData : null,
+		
+
 	load: function (ctx,imageData){
 		ctx = ctx || this._ctx;
 		imageData = imageData || this._imageData;
+		imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 		this._imageData = imageData;
 		this.__imageData = copyImageData(ctx, imageData);
 		ctx.putImageData(this.__imageData, 0, 0);		
@@ -48,6 +55,7 @@ var imgMan={
 	negative: function (ctx,imageData){
 		ctx = ctx || this._ctx;
 		imageData = imageData || this._imageData;
+		imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 		var data = imageData.data;
 		for(var i = 0; i < data.length; i += 4) {
 			data[i] = 255 - data[i];// red
@@ -60,6 +68,7 @@ var imgMan={
 	darker: function (ctx,imageData){
 		ctx = ctx || this._ctx;
 		imageData = imageData || this._imageData;
+		imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 		var data = imageData.data;
 		for(var i = 0; i < data.length; i += 4) {
 			data[i]   = this._darker(data[i]);
@@ -72,6 +81,7 @@ var imgMan={
 	lighter: function (ctx,imageData){
 		ctx = ctx || this._ctx;
 		imageData = imageData || this._imageData;
+		imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 		var data = imageData.data;
 		for(var i = 0; i < data.length; i += 4) {
 			data[i]   = this._lighter(data[i]);
@@ -90,6 +100,7 @@ imgMan._gray = function(r,g,b) {
 imgMan.grayscale = function(ctx,imageData) {
 	ctx = ctx || this._ctx;
 	imageData = imageData || this._imageData;
+	imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 	var d = imageData.data;
 	for (var i=0; i<d.length; i+=4) {
 		d[i] = d[i+1] = d[i+2] = this._gray(d[i],d[i+1],d[i+2]);
@@ -101,6 +112,7 @@ imgMan.grayscale = function(ctx,imageData) {
 imgMan.threshold = function(ctx,imageData,threshold) {
 	ctx = ctx || this._ctx;
 	imageData = imageData || this._imageData;
+	imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 	var d = imageData.data;
 	for (var i=0; i<d.length; i+=4) {
 		var v = (this._gray(d[i],d[i+1],d[i+2]) >= threshold) ? 255 : 0;
@@ -119,6 +131,7 @@ imgMan.threshold = function(ctx,imageData,threshold) {
 imgMan.sharpen = function(ctx,imageData) {
 	ctx = ctx || this._ctx;
 	imageData = imageData || this._imageData;
+	imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 	var o = imgMan.convolute(imageData,
 	[  0, -1,  0,
 	-1,  5, -1,
@@ -129,6 +142,7 @@ imgMan.sharpen = function(ctx,imageData) {
 imgMan.blur = function(ctx,imageData) {
 	ctx = ctx || this._ctx;
 	imageData = imageData || this._imageData;
+	imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 	var o = imgMan.convolute(imageData,
 	[ 1/9, 1/9, 1/9,
     1/9, 1/9, 1/9,
@@ -136,22 +150,35 @@ imgMan.blur = function(ctx,imageData) {
 	);
 	ctx.putImageData(o, 0, 0);
 }
-imgMan.vertical = function(ctx,imageData) {
+imgMan.ciach1 = function(ctx,imageData) {
 	ctx = ctx || this._ctx;
 	imageData = imageData || this._imageData;
+	imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 	var o = imgMan.convolute(imageData,
-	[ -1, 0, 1,
-    -2, 0, 2,
-    -1, 0, 1 ]
+	[  0, -1,  0,
+	  -1,  6, -1,
+	   0, -1,  0 ]	
 	);
 	ctx.putImageData(o, 0, 0);
 }
-imgMan.horizontal = function(ctx,imageData) {
+imgMan.ciach2 = function(ctx,imageData) {
 	ctx = ctx || this._ctx;
 	imageData = imageData || this._imageData;
+	imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
 	var o = imgMan.convolute(imageData,
 	[  0, -1,  0,
 	  -1,  7, -1,
+	   0, -1,  0 ]	
+	);
+	ctx.putImageData(o, 0, 0);
+}
+imgMan.ciach3 = function(ctx,imageData) {
+	ctx = ctx || this._ctx;
+	imageData = imageData || this._imageData;
+	imageData = ctx.getImageData(0, 0, imageData.width,imageData.height);
+	var o = imgMan.convolute(imageData,
+	[  0, -1,  0,
+	  -1,  8, -1,
 	   0, -1,  0 ]	
 /*	
 	[ -1, -2, -1,
