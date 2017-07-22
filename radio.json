@@ -54,6 +54,9 @@
 {"title":"RFM-Słoneczne","stream":"http://195.150.20.242:8000/rmf_sloneczne_przeboje"},
 {"title":"RFM w pracy","stream":"http://195.150.20.242:8000/rmf_w_pracy"},
 {"title":"RFM-AudioBook","stream":"http://195.150.20.242:8000/audiobook"},
-{"title":"RFM-BABY","stream":"http://195.150.20.242:8000/rmf_baby"}
+{"title":"RFM-BABY","stream":"http://195.150.20.242:8000/rmf_baby"},
+{"title":"Muzyczne radio","stream":"http://stream3.nadaje.com:9900/;stream/1"},
+{"title":"Zet Gold","stream":"http://zgl-wro-02.cdn.eurozet.pl:8822/;stream.nsv"},
+{"title":"Muzo.FM","stream":"http://stream4.nadaje.com/muzo"}
   
 ]
