@@ -57,6 +57,7 @@
 {"title":"RFM-BABY","stream":"http://195.150.20.242:8000/rmf_baby"},
 {"title":"Muzyczne radio","stream":"http://stream3.nadaje.com:9900/;stream/1"},
 {"title":"Zet Gold","stream":"http://zgl-wro-02.cdn.eurozet.pl:8822/;stream.nsv"},
-{"title":"Muzo.FM","stream":"http://stream4.nadaje.com/muzo"}
+{"title":"Muzo.FM","stream":"http://stream4.nadaje.com/muzo"},
+{"title":"XtremeL","stream":"http://8.38.78.173:8156/stream"}
   
 ]
