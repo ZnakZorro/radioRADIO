@@ -1,0 +1,38 @@
+<html lang="pl"> 
+<head> 
+<meta charset="utf-8"> 
+	<title>SERV mini</title> 
+	<meta name="viewport" content="width=device-width,initial-scale=1"> 
+	<link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
+	<style>
+		body,button {font:normal 1em Verdana; margin:0.5em; padding:0.5em;}
+		button {border-radius:0.5em;}
+		button:focus {outline:0;}
+		p {margin:0.2em 0;}
+
+		@media screen and (max-width: 640px){
+			body {margin:0.2em}
+		}
+	</style>
+
+<script>
+	"use strict";
+	function $(id)   {return document.getElementById(id);}
+
+	var czas = function(){$('info').textContent = (new Date()).toLocaleString();}
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		czas();
+		setInterval(czas,1000);	
+	});
+</script>
+
+</head> 
+<body>
+
+<h1>Czas</h1>
+<h3 id="info"></h3>
+<div id="debug"></div>
+
+</body> 
+</html>
