@@ -37,7 +37,7 @@ http.createServer(function (req, res) {
 	let info = execSync(mpcexe).toString();
 	//console.log(info);
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(page.header('Oidar+'));
+	res.write(page.header('OIDAR++','red'));
 	res.write(page.div('container',radioButtons()));
 	res.write(page.div('klawisze',KLAWISZE));
 	res.write(page.pre('info',info));
