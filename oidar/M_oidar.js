@@ -11,7 +11,7 @@ return `<html>
 <title>${title}</title>	
 <style>
 body{font:normal 12pt verdana; margin:0.5%;}
-div {float:left; margin:0.5% 1%; padding:1%; width:96%;border:1px solid #ddd; border-radius:0.5em;}
+div,pre {float:left; margin:0.5% 1%; padding:1%; width:96%;border:1px solid #ddd; border-radius:0.5em; white-space: inherit;}
 div#klawisze  {background:#f4f4f4;}
 div#container {background:#f0f0f0;}
 a {float:left; text-decoration:none; color:#235; border:1px solid gray; background:#e0e0e0; padding:0.5em; margin:0.5em; border-radius:0.5em;}
@@ -22,11 +22,15 @@ a {float:left; text-decoration:none; color:#235; border:1px solid gray; backgrou
 },
 
 div: function(id,wpis) {
-	return `<div id="${id}">${wpis}</div>`;
+	return `\n<div id="${id}">${wpis}</div>\n`;
+},
+
+pre: function(id,wpis) {
+	return `\n<pre id="${id}">${wpis}</pre>\n`;
 },
 
 footer: function(wpis) {
-	return `<div><hr />${wpis}</div></body></html>`;
+	return `\n<div>${wpis}</div>\n</body>\n</html>`;
 }
   
 
