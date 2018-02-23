@@ -8,8 +8,8 @@ const KLAWISZE =`
 <a href="/info">Info</a>
 <a href="/play">Play</a>
 <a href="/stop">Stop</a>
-<a href="/volplus">Vol+</a>
 <a href="/volminus">Vol-</a>
+<a href="/volplus">Vol+</a>
 <a href="/prev">Prev</a>
 <a href="/next">Next</a>
 `;
@@ -40,7 +40,7 @@ http.createServer(function (req, res) {
 	res.write(page.header('Oidar+'));
 	res.write(page.div('container',radioButtons()));
 	res.write(page.div('klawisze',KLAWISZE));
-	res.write(page.div('info',info));
+	res.write(page.pre('info',info));
 	res.write(page.footer('Koniec'));
 	res.end();
 }).listen(8080,function(){console.log('::8080');});
