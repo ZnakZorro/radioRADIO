@@ -11,9 +11,9 @@ return `<html>
 <title>${title}</title>	
 <style>
 body{font:normal 12pt verdana; margin:0.5%;}
-div {float:left; margin:1%;padding:1%; width:90%;}
-div.klawisze  {}
-div.container {width:91%; margin:1% 3%; border:1px solid #ddd; background:#f8f8f8;  border-radius:0.5em;}
+div {float:left; margin:0.25% 1%; padding:0.5%; width:96%;}
+div.klawisze  {background:#f4f4f4;}
+div.container {width:91%; margin:1% 3%; border:1px solid #ddd; background:#f0f0f0;  border-radius:0.5em;}
 a {float:left; text-decoration:none; color:#124; border:1px solid gray; background:#e0e0e0; padding:0.5em; margin:0.5em; border-radius:0.5em;}
 </style>
 </head>
