@@ -11,10 +11,11 @@ var outMENU = '<br /><a name="top" />\n';
 var cacheSecounds 	= 12*300;	// secounds 300= 5 minut 
 var rssHours 		= 6; 	// hours
 
-console.log('~~~ Wait for /rssy.json');
-console.log(__dirname+'/rssy.json');
-var rssy = fs.readFileSync(__dirname+'/rssy.json', 'utf8');
-console.log(rssy);
+console.log('~~~ Wait for /rssy.json',__dirname+'/rssy.json');
+var strssy = fs.readFileSync(__dirname+'/rssy.json', 'utf8');
+var rssy = JSON.parse(strssy);
+//console.log(typeof(rssy),rssy);
+
 
 function getFeed (urlfeed, callback) {
 	let req = request (urlfeed);
@@ -84,9 +85,7 @@ function readRSSY(res){
 function readRSSYfromWWW(res){	
 	let artCount=1;
 		rssy.forEach(function(item,y){
-			console.log('#100=',y,item.title,item.url);
 			outMENU += '<a href="#'+item.title+'"><span class="menu">'+item.title+'</span></a>\n';
-			//console.log('#102=',outMENU);
 			let urlTestFeed = item.url;
 			
 			getFeed (urlTestFeed, function (err, feedItems) {
@@ -94,24 +93,17 @@ function readRSSYfromWWW(res){
 				let teraz = (new Date()).toLocaleString();
 				let now   = (new Date()).getTime();
 				let outHTML ='';
-				//console.log ("<h2>"+item.title+"</h2>\n");
 				outHTML+='<div class="rss" title="'+item.title+'"><a name="'+item.title+'"/>\n';
 				outHTML+='<a href="#top"><h2> &uArr; '+item.title+'</h2></a>\n';
-				//console.log ("There are " + feedItems.length + " items in the feed.\n");
 				for (let i = 0; i < feedItems.length; i++) {
-					//title,description,summary,date,pubdate,pubDate,link,guid,author,
-					//console.log ("#" +pad(i)+"\n<h3>"+feedItems[i].title+"</h3>\n<div>"+feedItems[i].summary+".</div>\n\n");
 					let pub   = (new Date(feedItems[i].date)).getTime();
 					let delta = Math.round((now-pub)/3600000); // w godzinach
 					if (delta>100) delta = 0;
-					//console.log ("#121=", item.title, delta,rssHours,feedItems[i].date);
 					if (item.title != 'PAP' && delta>rssHours) continue;
-					//console.log(now,pub,delta);
 					let czas  = (new Date(feedItems[i].date)).toLocaleString();// || (new Date(feedItems[i].pubdate)).toLocaleString() || (new Date(feedItems[i].pubDate)).toLocaleString();
 					outHTML+='<!--#' +pad(i)+'-->\n';
 					outHTML+='<div data-delta="'+delta+'">';
 						outHTML+='<a href="'+feedItems[i].link+'" title="Link" target="_blank"><h3>'+artCount+'. '+' <small>['+delta+'h]</small> '+feedItems[i].title+'</h3></a>\n';
-						//outHTML+='<span class="czas">'+czas+' ['+delta+']</span>\n';
 						outHTML+=feedItems[i].summary;
 					outHTML+='</div>\n\n';
 					artCount++;
@@ -134,8 +126,10 @@ let startHTML ='<html><head>\n';
 		startHTML +='body {font:normal 11pt verdana; margin:0.75em;; padding:0;}\n';
 		startHTML +='a {text-decoration:none; color:#126}\n';
 		startHTML +='h2 {clear: both; margin-top:0.2em;padding-top:1.0em;}\n';
+		startHTML +='h3 {clear: both;}\n';
 		startHTML +='div.nav{float:left; display:block; width:100%; background:#eee; font-size:1.25rem; padding:0.33rem; margin-bottom:1em;}\n';
 		startHTML +='div.nav span {float: left;margin: 0.3em;background: #ffffff;border: 1px solid gray;padding: 0.3em 0.7em;border-radius: 0.5em;}\n';
+		startHTML +='img {max-width:120px;height:auto;float:left; margin-right:0.5em;}\n';
 	startHTML +='</style>\n';
 	startHTML +='</head>\n<body>\n\n';
 	
@@ -152,7 +146,7 @@ function finishRSS(res,out,y,ile){
 	console.log ('#164 licznik='+licznik,y,ile);	
 	if(licznik===ile) {
 		let outM = '<div class="nav">'+outMENU+'</div>\n\n';
-		console.log ('#167 outM='+outM);	
+		//console.log ('#167 outM='+outM);	
 		let alesHTML = startHTML+outM+outALL+stopHTML+'<br /><hr /><br />';
 		saveToFile(alesHTML);
 		sendRSS2Browser(res,alesHTML);
@@ -164,7 +158,7 @@ function finishRSS(res,out,y,ile){
 
 function sendRSS2Browser(res,alesHTML){
 		res.send(alesHTML);
-		res.end('<hr />2 Koniec<br /><br /><br />');
+		res.end('<hr /> Koniec<br /><br /><br />');
 		let czas = (new Date()).toLocaleString();
 		
 		//console.log ('#164 czas=',czas);
@@ -196,5 +190,5 @@ app.get("/*", function(req, res){
 	//res.send('<h1>hi</h1>');
 	readRSSY(res);
 });
-server.listen('8880',function(){console.log('------------------------------------\n  Listen on 8880\n------------------------------------\n\n');});
+server.listen('8880',function(){console.log('------------------------------------\n  Listen on 8880\n------------------------------------\n');});
 
