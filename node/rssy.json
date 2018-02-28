@@ -1,0 +1,10 @@
+[
+{"title": "Wiadomości","url": "https://www.bankier.pl/rss/wiadomosci.xml"},
+{"title": "Finanse","url": "https://www.bankier.pl/rss/finanse.xml"},
+{"title": "Giełda","url": "https://www.bankier.pl/rss/gielda.xml"},
+{"title": "Waluty","url": "https://www.bankier.pl/rss/waluty.xml"},
+{"title": "HackaDay","url": "https://hackaday.com/blog/feed/"},
+{"title": "PAP","url": "http://www.pap.pl/API/pl/Cms.Informations/Rss/1159/0"},
+{"title": "PRSzczecin","url": "http://radioszczecin.pl/rss.php"},
+{"title": "AntyWeb","url": "http://antyweb.pl/feed/"}
+]
