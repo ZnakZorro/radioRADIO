@@ -28,7 +28,9 @@ function getFeed (urlfeed, callback) {
 			}
 		});
 	req.on ("error", function (err) {
-		console.log ("getFeed: err.message == " + err.message);
+		licznik++;
+		console.log ("31 getFeed: err.message == " + err.message);
+		console.log(urlfeed);
 		});
 	feedparser.on ("readable", function () {
 		try {
@@ -38,22 +40,20 @@ function getFeed (urlfeed, callback) {
 				}
 			}
 		catch (err) {
-			console.log ("getFeed: err.message == " + err.message);
+			console.log ("41 getFeed: err.message == " + err.message);
 			}
 		});
 	feedparser.on ("end", function () {
 		callback (undefined, feedItems);
 		});
 	feedparser.on ("error", function (err) {
-		console.log ("getFeed: err.message == " + err.message);
+		console.log ("48 getFeed: err.message == " + err.message);
 		callback (err);
 		});
 	}
 		function pad (num) { 
 			let s = num.toString (), ctplaces = 4;
-			while (s.length < ctplaces) {
-				s = "0" + s;
-				}
+			while (s.length < ctplaces) {s = "0" + s;}
 			return (s);
 			}
 //console.log ("\n" + myProductName + " v" + myVersion + ".\n"); 
@@ -87,7 +87,6 @@ function readRSSYfromWWW(res){
 		rssy.forEach(function(item,y){
 			outMENU += '<a href="#'+item.title+'"><span class="menu">'+item.title+'</span></a>\n';
 			let urlTestFeed = item.url;
-			
 			getFeed (urlTestFeed, function (err, feedItems) {
 			if (!err) {
 				let teraz = (new Date()).toLocaleString();
@@ -109,7 +108,8 @@ function readRSSYfromWWW(res){
 					artCount++;
 					}
 					outHTML +='</div>\n';
-					finishRSS(res,outHTML,y,rssy.length);
+					rssy[y].html = outHTML;
+					finishRSS(res,outHTML,y,rssy.length,item.title);
 				}
 				
 			}); // getFeed
@@ -135,19 +135,26 @@ let startHTML ='<html><head>\n';
 	
 let stopHTML ='\n</body>\n</html>\n';
 	
+function combainHTML(rssy){
+	let out ='';
+	rssy.forEach(function(ret){
+		//console.log(ret)
+		out += ret.title+ret.html;
+	});
+	return out;
+}
 	
-var outALL ='';
 
 var licznik =0;	
 
-function finishRSS(res,out,y,ile){
-	outALL += out;
-	licznik++
-	console.log ('#164 licznik='+licznik,y,ile);	
-	if(licznik===ile) {
+function finishRSS(res,out,y,ile,title){
+	licznik++;
+	console.log ('#150 licznik='+licznik,y,ile);	
+	if (licznik===ile) {
 		let outM = '<div class="nav">'+outMENU+'</div>\n\n';
-		//console.log ('#167 outM='+outM);	
-		let alesHTML = startHTML+outM+outALL+stopHTML+'<br /><hr /><br />';
+		let readyHTML = combainHTML(rssy);
+		//console.log(readyHTML);
+		let alesHTML = startHTML+outM+readyHTML+stopHTML+'<br /><hr /><br />';
 		saveToFile(alesHTML);
 		sendRSS2Browser(res,alesHTML);
 		licznik=0;
@@ -185,9 +192,6 @@ let app = express();
 let server  = require("http").createServer(app);
 app.get("/*", function(req, res){
 	outMENU = '<br /><a name="top" />\n';
-	outALL ='';
-	
-	//res.send('<h1>hi</h1>');
 	readRSSY(res);
 });
 server.listen('8880',function(){console.log('------------------------------------\n  Listen on 8880\n------------------------------------\n');});
