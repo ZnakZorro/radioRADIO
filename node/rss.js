@@ -6,10 +6,21 @@ const request     = require(moddir+"request");
 const FeedParser  = require(moddir+"feedparser");
 const testurlFeed = "http://www.guardian.co.uk/world/usa/rss";
 const fs          = require('fs');
-var rssFile       = __dirname+'/public/rss.html';
+var rssFile       = __dirname+'/public/cache/rss.html';
 var outMENU = '<br /><a name="top" />\n';
 var cacheSecounds 	= 12*300;	// secounds 300= 5 minut 
 var rssHours 		= 6; 	// hours
+
+var settings = {}
+var debug = true;
+
+let args = process.argv.slice(2)[0];
+settings.q       = args.indexOf('-q')>0       ? true:false;
+settings.file    = args.indexOf('-file')>0    ? true:false;
+settings.cache   = args.indexOf('-cache')>0   ? true:false;
+settings.nocache = args.indexOf('-nocache')>0 ? true:false;
+settings.debug   = args.indexOf('-debug')>0   ? true:false;
+
 
 console.log('~~~ Wait for /rssy.json',__dirname+'/rssy.json');
 var strssy = fs.readFileSync(__dirname+'/rssy.json', 'utf8');
@@ -66,6 +77,7 @@ function readRSSY(res){
 		//sprawdz date
 		fs.stat(rssFile, function(err, stats){
 			let seconds = Math.round((new Date().getTime() - stats.mtime) / 1000);
+			if (settings.nocache) seconds = cacheSecounds+1;
 			//console.log('#73==',seconds, new Date().getTime(),' - ',new Date(stats.mtime).getTime(),stats.mtime);
 			console.log(`#73 File modified ${seconds} secunds ago`);
 			if(seconds>cacheSecounds) {readRSSYfromWWW(res)}
@@ -83,9 +95,9 @@ function readRSSY(res){
 }			
 
 function readRSSYfromWWW(res){	
-	let artCount=1;
+	
 		rssy.forEach(function(item,y){
-			outMENU += '<a href="#'+item.title+'"><span class="menu">'+item.title+'</span></a>\n';
+			
 			let urlTestFeed = item.url;
 			getFeed (urlTestFeed, function (err, feedItems) {
 			if (!err) {
@@ -95,17 +107,18 @@ function readRSSYfromWWW(res){
 				outHTML+='<div class="rss" title="'+item.title+'"><a name="'+item.title+'"/>\n';
 				outHTML+='<a href="#top"><h2> &uArr; '+item.title+'</h2></a>\n';
 				for (let i = 0; i < feedItems.length; i++) {
+					let artCount = i+1;
 					let pub   = (new Date(feedItems[i].date)).getTime();
 					let delta = Math.round((now-pub)/3600000); // w godzinach
 					if (delta>100) delta = 0;
 					if (item.title != 'PAP' && delta>rssHours) continue;
+					if (artCount>20) break;
 					let czas  = (new Date(feedItems[i].date)).toLocaleString();// || (new Date(feedItems[i].pubdate)).toLocaleString() || (new Date(feedItems[i].pubDate)).toLocaleString();
 					outHTML+='<!--#' +pad(i)+'-->\n';
 					outHTML+='<div data-delta="'+delta+'">';
 						outHTML+='<a href="'+feedItems[i].link+'" title="Link" target="_blank"><h3>'+artCount+'. '+' <small>['+delta+'h]</small> '+feedItems[i].title+'</h3></a>\n';
 						outHTML+=feedItems[i].summary;
 					outHTML+='</div>\n\n';
-					artCount++;
 					}
 					outHTML +='</div>\n';
 					rssy[y].html = outHTML;
@@ -137,11 +150,14 @@ let stopHTML ='\n</body>\n</html>\n';
 	
 function combainHTML(rssy){
 	let out ='';
+	let outMENU = '<div class="nav">';
 	rssy.forEach(function(ret){
 		//console.log(ret)
-		out += ret.title+ret.html;
+		out += ret.html;
+		outMENU += '<a href="#'+ret.title+'"><span class="menu">'+ret.title+'</span></a>\n';
 	});
-	return out;
+	outMENU +='</div>\n\n'
+	return outMENU+out;
 }
 	
 
@@ -150,13 +166,12 @@ var licznik =0;
 function finishRSS(res,out,y,ile,title){
 	licznik++;
 	console.log ('#150 licznik='+licznik,y,ile);	
-	if (licznik===ile) {
-		let outM = '<div class="nav">'+outMENU+'</div>\n\n';
+	if (licznik===ile) {		
 		let readyHTML = combainHTML(rssy);
 		//console.log(readyHTML);
-		let alesHTML = startHTML+outM+readyHTML+stopHTML+'<br /><hr /><br />';
+		let alesHTML = startHTML+readyHTML+stopHTML+'<br /><hr /><br />';
 		saveToFile(alesHTML);
-		sendRSS2Browser(res,alesHTML);
+		if(res) sendRSS2Browser(res,alesHTML);
 		licznik=0;
 	}
 }
@@ -194,5 +209,17 @@ app.get("/*", function(req, res){
 	outMENU = '<br /><a name="top" />\n';
 	readRSSY(res);
 });
-server.listen('8880',function(){console.log('------------------------------------\n  Listen on 8880\n------------------------------------\n');});
 
+		console.log('settings=','--q-file-debug-cache-nocache');
+		console.log(settings);
+
+
+if (settings.file){
+	console.log('only file');
+	readRSSYfromWWW(null);
+}
+else {
+	server.listen('8880',function(){
+		console.log('------------------------------------\n  Listen on 8880\n------------------------------------\n');
+	});
+}
