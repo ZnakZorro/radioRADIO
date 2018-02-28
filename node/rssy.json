@@ -3,8 +3,20 @@
 {"title": "Finanse","url": "https://www.bankier.pl/rss/finanse.xml"},
 {"title": "Giełda","url": "https://www.bankier.pl/rss/gielda.xml"},
 {"title": "Waluty","url": "https://www.bankier.pl/rss/waluty.xml"},
-{"title": "HackaDay","url": "https://hackaday.com/blog/feed/"},
+{"title": "TVN24naj","url": "https://www.tvn24.pl/najnowsze.xml"},
+{"title": "TVN24świat","url": "https://www.tvn24.pl/wiadomosci-ze-swiata,2.xml"},
+
+
 {"title": "PAP","url": "http://www.pap.pl/API/pl/Cms.Informations/Rss/1159/0"},
 {"title": "PRSzczecin","url": "http://radioszczecin.pl/rss.php"},
-{"title": "AntyWeb","url": "http://antyweb.pl/feed/"}
+
+{"title": "HackaDay","url": "https://hackaday.com/blog/feed/"},
+{"title": "AntyWeb","url": "http://antyweb.pl/feed/"},
+{"title": "SpiderWeb","url": "https://www.spidersweb.pl/rss-wszystkie"},
+
+{"title": "NeXt","url": "http://next.gazeta.pl/pub/next/rssnext.htm"},
+{"title": "gwKraj","url": "http://wiadomosci.gazeta.pl/pub/rss/wiadomosci_kraj.htm"},
+{"title": "ePoli","url": "http://www.e-polityka.pl/rss/rss.php?d=36"}
+
+
 ]
