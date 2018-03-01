@@ -14,12 +14,12 @@ var rssHours 		= 6; 	// hours
 var settings = {}
 var debug = true;
 
-let args = process.argv.slice(2)[0];
-settings.q       = args.indexOf('-q')>0       ? true:false;
-settings.file    = args.indexOf('-file')>0    ? true:false;
-settings.cache   = args.indexOf('-cache')>0   ? true:false;
-settings.nocache = args.indexOf('-nocache')>0 ? true:false;
-settings.debug   = args.indexOf('-debug')>0   ? true:false;
+let args = process.argv.slice(2)[0] || [];
+settings.q       = args.indexOf('-q') > -1       ? true:false;
+settings.file    = args.indexOf('-file') > -1    ? true:false;
+settings.cache   = args.indexOf('-cache') > -1   ? true:false;
+settings.nocache = args.indexOf('-nocache') > -1 ? true:false;
+settings.debug   = args.indexOf('-debug') > -1   ? true:false;
 
 
 console.log('~~~ Wait for /rssy.json',__dirname+'/rssy.json');
