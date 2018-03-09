@@ -70,6 +70,7 @@ button {
     overflow: hidden;
 }
 
+.active,button:active, button:focus  {background:#666; color:white;}
 </style>
 
 <script>
@@ -103,8 +104,31 @@ let actualPlaylist = 'radio';
 		}catch(err){showErrorMessage('Błąd połaczenia z radiem','Problem z wifi -getXHR');}
     }	
 	
+	function firstUp(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+	
+	function setActive(nr){
+		nr = parseInt(nr);
+		console.log(nr)
+		let blok = $$('#'+firstUp(actualPlaylist)+' button');		
+		for (let b in blok){
+			let bb = parseInt(b)+1;
+			if (typeof(blok[b]) != 'object') break;
+			if (bb===nr){
+				blok[b].classList.add("active")
+			} else {
+				if (blok[b].classList.contains('active')){
+					blok[b].classList.remove('active');
+				}
+			}
+		}	
+	}
+	
+	
 const playRadio = function(nr){
 	getXHR(radioURL+'radio/'+nr,radioInfo);
+	setActive(nr)
 }	
 
 
@@ -115,7 +139,8 @@ const radioInfo = function(ret){
 	if (r.actualPlaylist) actualPlaylist=r.actualPlaylist;
 	
 	if (r.title){
-		$('#info').innerHTML = r.title+'<br />'+r.info;
+		$('#info').innerHTML = r.title+'<br />';
+		$('#info').innerHTML = r.info+'<br />';
 	}
 	
 	if (r.type && r.playfiles && r.type === 'playfiles'){
@@ -146,19 +171,11 @@ const radioInfo = function(ret){
 		}
 		opened.innerHTML = html;
 	}
+	if (r.active) setActive(r.active);
+	if (r.vol) $('#gear-vol').value=r.vol;
 	
 
 }
-
-// DOM READY
-document.addEventListener('DOMContentLoaded', function() {
-	
-	openPlaylist(null, 'Ustaw')
-	getXHR(radioURL+'radio/info',radioInfo);
-	setInterval(function(){getXHR(radioURL+'radio/info',radioInfo);},15000);
-	
-	
-});// dom ready
 
 function akcja(folder){
 	console.log(folder);
@@ -194,8 +211,27 @@ function openPlaylist(evt, folder) {
 	$('#'+folder).classList.add("open");
 	if (evt) evt.currentTarget.classList.add("active");
 	else $('button').classList.add("active");
-	
+	setTimeout(function(){info()},1000);
+	setTimeout(function(){info()},3000);
 }
+
+
+function Volume(t){
+	console.log(t.value)
+	getXHR(radioURL+'vol/'+t.value,radioInfo);
+}
+
+function info(){getXHR(radioURL+'radio/info',radioInfo);}
+
+// DOM READY
+document.addEventListener('DOMContentLoaded', function() {
+	
+	openPlaylist(null, 'Ustaw')
+	info();
+	setInterval(function(){info();},15000);
+	
+	
+});// dom ready
 
 </script>
 
@@ -213,7 +249,8 @@ function openPlaylist(evt, folder) {
 </div>
 
 <div id="Ustaw" class="tabcontent">
-  <h3>Czekamy...</h3>
+  <p>Głosnośc</p>
+  <input onchange="Volume(this)" id="gear-vol" class="volume" type="range" min="40" max="100" value="85" style="width:100%;">
 </div>
 
 <div id="Radio" class="tabcontent">
