@@ -10,19 +10,29 @@
 <style>
 /*.c0,.c1,.c2,.c3,.c4{color:#fff!important}.c0{background:#369}.c1{background:#007bff}.c2{background:#6610f2}.c3{background:#6f42c1}.c4{background:#e83e8c}.c5{background:#dc3545;color:#000!important}.c6{background:#fd7e14;color:#fff!important}.c7{background:#ffc107;color:#000!important}.c8{background:#28a745;color:#fff!important}.c9{background:#20c997;color:#000!important}.c10,.c11,.c12,.c13,.c14,.c16,.c17,.c18,.c19,.c20{color:#fff!important}.c10{background:#17a2b8}.c11{background:#868e96}.c12{background:#3a3964}.c13{background:#007bff}.c14{background:#868e96}.c15{background:#28a745;color:#fff!important}.c16{background:#17a2b8}.c17{background:#ffc107}.c18{background:#dc3545}.c19{background:#700014}.c20{background:#0b6e2f}.c21{background:#ea6153;color:#000!important}.c22{background:#d14233;color:#fff!important}.c23,.c24{color:#000!important}.c23{background:#fbfcfc}.c24{background:#cbd0d3}*/
 .c0,.c1,.c2,.c3,.c4{color:#fff}.c0{background:#369}.c1{background:#007bff}.c2{background:#6610f2}.c3{background:#6f42c1}.c4{background:#e83e8c}.c5{background:#dc3545;color:#000}.c6{background:#fd7e14;color:#fff}.c7{background:#ffc107;color:#000}.c8{background:#28a745;color:#fff}.c9{background:#20c997;color:#000}.c10,.c11,.c12,.c13,.c14,.c16,.c17,.c18,.c19,.c20{color:#fff}.c10{background:#17a2b8}.c11{background:#868e96}.c12{background:#3a3964}.c13{background:#007bff}.c14{background:#868e96}.c15{background:#28a745;color:#fff}.c16{background:#17a2b8}.c17{background:#ffc107}.c18{background:#dc3545}.c19{background:#700014}.c20{background:#0b6e2f}.c21{background:#ea6153;color:#000}.c22{background:#d14233;color:#fff}.c23,.c24{color:#000}.c23{background:#fbfcfc}.c24{background:#cbd0d3}
+*,:after,:before {box-sizing: border-box}
 body {
     font-family: Verdana,Arial;
     font-size: 16px;
     padding: 0;
     margin: 0;
-	
 }
+
+
 button {
     font-size: 16px;
     margin: 0.25em;
     padding: 0.5em;
     border: 0;
     border-radius: 4px;
+}
+button:focus {outline:0;}
+button:active, button:focus  {background:#666; color:white;}
+.active{
+    /*background: #000!important;*/
+    color: #fff!important;
+	background-image: linear-gradient(to bottom, #bbb, #000, #bbb);
+	transition: 0.5s;
 }
 .tab {
     overflow: hidden;
@@ -31,7 +41,6 @@ button {
 }
 
 .tab button {
-    /* background-color: #ddd; */
     float: left;
     border: none;
     outline: none;
@@ -45,19 +54,16 @@ button {
     margin-right: 0;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
     background-color: #ddd;
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
-    background-color: #ccc;
-	border-top:1px solid gray;
-	border-bottom:1px solid gray;
+    background-color: #828282!important;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
 }
 
-/* Style the tab content */
 .tabcontent {
     display: none;
     padding: 6px 12px;
@@ -76,11 +82,6 @@ button {
     overflow: hidden;
 }
 
-button:active, button:focus  {background:#666; color:white;}
-.active{
-    background: #000!important;
-    color: #fff!important;
-}
 </style>
 
 <script>
