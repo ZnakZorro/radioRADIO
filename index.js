@@ -108,9 +108,11 @@ function getFilesFromPlaylist(active){
 }
 
 Buffer.prototype.pars = function() {return this.toString().trim();};
-		
+
+
+//qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq		
 function parseMpcInfo(f){
-	var ret = {"type":"info","active":"","title":"???","info":"???","vol":"","extra":"","actualPlaylist":actualPlaylist,"raw":f};
+	var ret = {"type":"info","active":"","title":"???","info":f,"vol":"","extra":"","actualPlaylist":actualPlaylist};
 	if (f.length===0) {return ret;}
 	
 			var mm = f.match(/\.*?#(.*?)\/.*?\nvolume: (.*?)% .*?repeat: (.*?) .*?random: (.*?) .*?single: (.*?) .*?/m);	 	
@@ -124,14 +126,9 @@ function parseMpcInfo(f){
 				if (mm[5]) ret.single   = mm[5]; 
 			}
 	
-	var infoarr=String(f).split("\n");
+	var infoarr = String(f).split("\n");
 	if (infoarr.length==4) {ret.title="ERROR"; ret.info=infoarr[3]; return ret;}
-	var info = String(f).split("\n")[0];
-	var arr = info.split("/");
-	ret.title=arr[0];
-	var last = arr.length-1;
-	if (last>0) ret.info = arr[last];
-	if (last>1) ret.info = arr[last-1]+" > "+arr[last];
+	ret.title = infoarr[0];
 	return ret;
 }
 			
@@ -158,54 +155,17 @@ var app = express();
 var server  = require("http").createServer(app);
 
 //app.use(express.bodyParser());
-
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({extended: true})); 
 
 
 
 app.use(express.static(__dirname + startPage));
-/*
-app.get("/volume/*", function(req, res){
-	var param=req.params[0];
-	if (parseInt(param) >0) param = "+"+param;
-	if (parseInt(param) ===0) param = "85";
-	console.log("/230 GET VOLUME PARAM=",typeof(param),param,parseInt(param));
-	//if (parseInt(param)>100) param='100';
-	//if (parseInt(param)<30) param='30';
-	//console.log("/163 VOLUME PARAM=",typeof(param),param,parseInt(param));
-	var info=execSync("mpc volume "+param).pars();
-	var ret = parseMpcInfo(info);
-	sendInfo(res,ret);
-});
-*/
-
 
 
 app.get("/*", function(req, res){
 	res.send(null);
 });
-/*
-app.post("/info", function(req, res){
-	var info = execSync("mpc current").pars();
-	var ret  = parseMpcInfo(info);
-	sendInfo(res,ret);
-});
-*/
-/*
-app.post("/info", function(req, res){
-	//var param=req.params[0];
-	var info=execSync("mpc").pars();
-	var ret = parseMpcInfo(info);
-	sendInfo(res,ret);
-});
-app.get("/info", function(req, res){
-	//var param=req.params[0];
-	var info=execSync("mpc").pars();
-	var ret = parseMpcInfo(info);
-	sendInfo(res,ret);
-});
-*/
 
 app.post("/play", function(req, res){
 	//var param=req.params[0];
@@ -357,8 +317,3 @@ server.listen(port);
 
 console.log("~~~EXPRESS.JS~~~//:"+port+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 setTimeout(function(){console.log("myIP="+myIP,"debug="+debug,"args=",args);},750);
-
-
-
-
-
