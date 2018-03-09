@@ -126,7 +126,8 @@ const radioInfo = function(ret){
 		for(let l in r.playfiles){
 			ll++;
 			let o  = r.playfiles[l];
-			let oo =o.split('/').pop().replace('.mp3','');
+			let oo =o.replace('.mp3','');
+			if (actualPlaylist != 'radio')	oo =o.split('/').pop().replace('.mp3','');
 			html += '<button onClick="playRadio('+ll+')">'+ll+'. '+oo+'</button>';
 		}
 		opened.innerHTML = html;
@@ -136,12 +137,14 @@ const radioInfo = function(ret){
 		let opened = $('.open');
 		opened.innerHTML ='';
 		let ll=0;
+		let html ='';
 		for(let l in r.playlist){
 			ll++;
 			let o = r.playlist[l];
-			//console.log(l,o);
-			opened.innerHTML += '<p>'+ll+' :: '+o+'</p>';
+			let oo =o.replace('.mp3','').replace('http://','');
+			html += '<button onClick="playRadio('+ll+')">'+ll+'. '+oo+'</button>';
 		}
+		opened.innerHTML = html;
 	}
 	
 
@@ -162,7 +165,7 @@ function akcja(folder){
 	if (folder==='Ustaw'){
 		console.log('akcja Ustaw');
 	}
-	else if (folder==='Radiooo'){
+	else if (folder==='Radio'){
 		console.log('akcja Radio');
 		getXHR(radioURL+'playlist',radioInfo);
 	}
