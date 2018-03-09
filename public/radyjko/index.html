@@ -105,8 +105,8 @@ const playRadio = function(nr){
 	
 const radioInfo = function(ret){
 	let r = (ret)[0];
-	console.log('radioInfo=',r);
-	console.log(r.type);
+	//console.log('radioInfo=',r);
+	//console.log(r.type);
 	
 	if (r.title){
 		$('#info').innerHTML = r.title+'<br />'+r.info;
@@ -162,6 +162,7 @@ function akcja(folder){
 	else {
 		console.log('akcja '+folder);
 		folder = folder.toLowerCase();
+		getXHR(radioURL+'folder/'+folder,radioInfo);
 		getXHR(radioURL+'playfile/'+folder,radioInfo);
 	}
 }
