@@ -28,15 +28,18 @@ button {
 
 /* Style the buttons inside the tab */
 .tab button {
-    background-color: inherit;
+    /* background-color: #ddd; */
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
+    padding: 0.75rem 1rem;
+    transition: 0.5s;
     font-size: 1rem;
-	border:1px solid white;
+    border: 1px solid white;
+    min-width: 7rem;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 /* Change background color of buttons on hover */
@@ -75,6 +78,7 @@ const $=(y)=>document.querySelector(y);
 const $$=(y)=>document.querySelectorAll(y);
 
 let radioURL = 'http://82.145.73.28:8888/';
+let actualPlaylist = 'radio';
 
 	function showErrorMessage(r){console.log(r);}
 	
@@ -102,11 +106,13 @@ let radioURL = 'http://82.145.73.28:8888/';
 const playRadio = function(nr){
 	getXHR(radioURL+'radio/'+nr,radioInfo);
 }	
-	
+
+
 const radioInfo = function(ret){
 	let r = (ret)[0];
-	//console.log('radioInfo=',r);
-	//console.log(r.type);
+	console.log('radioInfo=',r);
+	console.log('r.actualPlaylist=',r.actualPlaylist);
+	if (r.actualPlaylist) actualPlaylist=r.actualPlaylist;
 	
 	if (r.title){
 		$('#info').innerHTML = r.title+'<br />'+r.info;
@@ -114,15 +120,16 @@ const radioInfo = function(ret){
 	
 	if (r.type && r.playfiles && r.type === 'playfiles'){
 		let opened = $('.open');
-		opened.innerHTML ='';
+		opened.innerHTML ='<h3>Czekamy...</h3>';
 		let ll=0;
+		let html ='';
 		for(let l in r.playfiles){
 			ll++;
-			let o = r.playfiles[l];
-			//console.log(l,o);
-			//opened.innerHTML += '<p>'+ll+' :: '+o+'</p>';
-			opened.innerHTML += '<button onClick="playRadio('+ll+')">'+ll+'. '+o+'</button>';
+			let o  = r.playfiles[l];
+			let oo =o.split('/').pop().replace('.mp3','');
+			html += '<button onClick="playRadio('+ll+')">'+ll+'. '+oo+'</button>';
 		}
+		opened.innerHTML = html;
 	}
 
 	if (r.type && r.playlist && r.type === 'playlist'){
@@ -143,7 +150,7 @@ const radioInfo = function(ret){
 // DOM READY
 document.addEventListener('DOMContentLoaded', function() {
 	
-	openPlaylist(null, 'CMD')
+	openPlaylist(null, 'Ustaw')
 	getXHR(radioURL+'radio/info',radioInfo);
 	setInterval(function(){getXHR(radioURL+'radio/info',radioInfo);},15000);
 	
@@ -152,8 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function akcja(folder){
 	console.log(folder);
-	if (folder==='CMD'){
-		console.log('akcja CMD');
+	if (folder==='Ustaw'){
+		console.log('akcja Ustaw');
 	}
 	else if (folder==='Radiooo'){
 		console.log('akcja Radio');
@@ -162,7 +169,8 @@ function akcja(folder){
 	else {
 		console.log('akcja '+folder);
 		folder = folder.toLowerCase();
-		getXHR(radioURL+'folder/'+folder,radioInfo);
+		console.log('#171',actualPlaylist===folder,actualPlaylist,folder)
+		if (actualPlaylist != folder) getXHR(radioURL+'folder/'+folder,radioInfo);
 		getXHR(radioURL+'playfile/'+folder,radioInfo);
 	}
 }
@@ -194,26 +202,23 @@ function openPlaylist(evt, folder) {
 <div id="info">???</div>
 
 <div class="tab">
-	<button class="tablinks active" onclick="openPlaylist(event, 'CMD')">CMD</button>
+	<button class="tablinks active" onclick="openPlaylist(event, 'Ustaw')">Ustaw</button>
 	<button class="tablinks" onclick="openPlaylist(event, 'Radio')">Radio</button>
 	<button class="tablinks" onclick="openPlaylist(event, 'Muzyka')">Muzyka</button>
 	<button class="tablinks" onclick="openPlaylist(event, 'Jazz')">Jazz</button>
 	<button class="tablinks" onclick="openPlaylist(event, 'Aktualne')">Aktualne</button>
 </div>
 
-<div id="CMD" class="tabcontent">
-  <h3>CMD</h3>
-  <p>???</p>
+<div id="Ustaw" class="tabcontent">
+  <h3>Czekamy...</h3>
 </div>
 
 <div id="Radio" class="tabcontent">
-  <h3>Radio</h3>
-  <p>???</p>
+	<h3>Czekamy...</h3>
 </div>
 
 <div id="Muzyka" class="tabcontent">
-  <h3>Muzyka</h3>
-  <p>???</p>
+	<h3>Czekamy...</h3>
 </div>
 
 <div id="Jazz" class="tabcontent">
@@ -222,8 +227,7 @@ function openPlaylist(evt, folder) {
 </div>
 
 <div id="Aktualne" class="tabcontent">
-  <h3>Aktualne</h3>
-  <p>???</p>
+	<h3>Czekamy...</h3>
 </div>
 
 <script>
