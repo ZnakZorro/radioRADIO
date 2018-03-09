@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+	<title>rIO</title> 
+	<meta name="viewport" content="width=device-width,initial-scale=1"> 
+	<meta name="mobile-web-app-capable" content="yes"> 
+	<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA/8pYAP+XAAD/wVoA/+u0AP/qsgD/ynsA/9hvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICAAAAAAAAAAAAAAAAAgQEBAAAAAAAAAAAAAAAAgQBAQEDAAAAAAAAAAAAAAIEAQEBAwAAAAAAAAAAAAAAAgQEBAMAAAIAAAAAAAAAAAACAgIGAAAAAgAAAAAAAAAAAAACBgAAAAcCAAAAAAAAAAAAAgYAAAAHAgAAAAAAAAAAAAIGAAAABwIAAAAAAAAAAAACBgAAAgIAAAAAAAAAAAAAAgYCAgcCAAAAAAAAAAAAAAIFBwcHAAAAAAAAAAAAAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD//wAA8f8AAOH/AADA/wAAwP8AAODfAADw7wAA/OcAAPznAAD85wAA/M8AAPwPAAD8HwAA/n8AAP//AAA="  />
+	<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAD//vsA1h4OAP/9/gDgml8A8P/5AP/63QDn+vcA/PX8APW7bQD//fYA//n5AP/qjgD/87cA//z5AP/x3gD/7+wA//r/APz9/wDWeBIA8f/6AP/zwADqmmgA9r1YAPb6xgDxw1gA1ruqAP/+/QDaaEAA/6YtAP//8gD+974Az35FAKxpSAD5+/4A+f/7AMWUSgD/8vYA+//7AP//+wDs//wAulASAPOuawD/76wA//D0APL7/wDRYkIA+6cbANeinwCfNgoA87VHAOG8oAD67aoA//fQAPr+/wDeQgcA/P7/AP/y7wD//v8AkEkxAPr/0wDw7asA0Fs+AP2bJQD+5aAA9//9AMGNRwD/4dUA/d7NAP6yLwCbIRUA/v/9AP+4NwD//fIA+v/1APnGSgD+y10Ar0MxALCJXAD29vYA//7fALqMhQDz//4A9f/+AP/94gD0zXEA//bEAPn//gD6//4AeSoXAP7duADku6UA///+APv/3QD/+usA//z2APf++QDp/PcA7fn3AOymUwC7j1wA/f/2APvy6QD/8/8A//T0APP//wD5/P8A/vf0APb//wD//fwA+v//AI1LLgD7//8AznAeAP3//wDpkRsAxHJTAP///wD9//cA4qKaAPakFwC3ek4A//zvAP39/QDt/vsA/JtaAP/07QD//+cA/+e/APf6/gD8//gA/9uOAJhSNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdHR0dHRbEzVSEQB0dHR0dHR0dHR0bV5FWGAQdHR0dHR0dHRWRg17AS8hV3R0dHR0dHR0GmgmdjYwQwZ0dHR0dHR0dAJ1PQ9CK39MdHR0dHR0dHRkbg4SPhxwBThfenR0dHR0SHxNRDFHcnkZbwJ0dHR0dEliQUtKGHdnWmsCdHR0dHQdAyOCC1QufjJmgXR0dHR0ZR9jPzM8Fl0oBDd0dHR0dFEseCoUHghqcTlbdHR0dHRAgCAMNBcpCnR0dHR0dHR0QGmDVU87FSR0dHR0dHR0dHF0UFlTXHMJdHR0dHR0dHRxTmw6Gy19B3R0dHR0dHR0b3RAYSdrJSJ0dHR0dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
+<style>
+body {
+    font-family: Verdana,Arial;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 1rem;
+	border:1px solid white;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+	border-top:1px solid gray;
+	border-bottom:1px solid gray;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+#info {
+    background: #eee;
+    color: #222;
+    height: 3.3em;
+    padding: 0.5em;
+    overflow: hidden;
+}
+
+</style>
+
+<script>
+"use strict";
+const $=(y)=>document.querySelector(y);
+const $$=(y)=>document.querySelectorAll(y);
+
+let radioURL = 'http://82.145.73.28:8888/';
+
+	function getXHR(url,callback){
+		let xmlhttp=null;
+        if   (window.XMLHttpRequest){xmlhttp = new XMLHttpRequest();}
+        else {xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");}
+        xmlhttp.onreadystatechange = function(){
+            if (xmlhttp.readyState==4){
+				if (xmlhttp.status==200){
+					var ret = xmlhttp.responseText;
+					//console.log('XHR ret=',ret)
+					callback(JSON.parse(ret));
+				} else {showErrorMessage('Błąd połaczenia z radiem','Problem z wifi -getXHR');}
+				
+            }
+        }
+		try{
+			xmlhttp.open("POST",url,true);
+			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");	
+			xmlhttp.send();
+		}catch(err){showErrorMessage('Błąd połaczenia z radiem','Problem z wifi -getXHR');}
+    }	
+	
+const radioInfo = function(ret){
+	let r = (ret)[0];
+	console.log('radioInfo=',r);
+	console.log(r.type);
+	if (r.title){
+		$('#info').innerHTML = r.title+'<br />'+r.info;
+	}
+	if (r.type && r.playlist && r.type === 'playlist'){
+		let opened = $('.open');
+		opened.innerHTML ='';
+		for(let l in r.playlist){
+			let o = r.playlist[l];
+			console.log(l,o);
+			opened.innerHTML += '<p>'+l+' :: '+o+'</p>';
+		}
+		//$('#info').innerHTML = r.title+'<br />'+r.info;
+	}
+
+}
+
+// DOM READY
+document.addEventListener('DOMContentLoaded', function() {
+	
+	openPlaylist(null, 'CMD')
+	getXHR(radioURL+'radio/info',radioInfo);
+	setInterval(function(){getXHR(radioURL+'radio/info',radioInfo);},15000);
+	
+	
+});// dom ready
+
+function akcja(folder){
+	console.log(folder);
+	getXHR(radioURL+'playlist',radioInfo);
+	
+
+
+}
+
+function openPlaylist(evt, folder) {
+	if (evt) akcja(folder);
+	let i, tabcontent, tablinks;
+	tabcontent = $$(".tabcontent");
+	for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+		tabcontent[i].classList.remove('open');
+	}
+	tablinks = $$(".tablinks");
+	for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].classList.remove('active');
+	}
+	$('#'+folder).style.display = "block";
+	$('#'+folder).classList.add("open");
+	if (evt) evt.currentTarget.classList.add("active");
+	else $('button').classList.add("active");
+	
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="info">???</div>
+
+<div class="tab">
+	<button class="tablinks active" onclick="openPlaylist(event, 'CMD')">CMD</button>
+	<button class="tablinks" onclick="openPlaylist(event, 'Radio')">Radio</button>
+	<button class="tablinks" onclick="openPlaylist(event, 'Muzyka')">Muzyka</button>
+	<button class="tablinks" onclick="openPlaylist(event, 'Jazz')">Jazz</button>
+	<button class="tablinks" onclick="openPlaylist(event, 'Aktualne')">Aktualne</button>
+</div>
+
+<div id="CMD" class="tabcontent">
+  <h3>CMD</h3>
+  <p>???</p>
+</div>
+
+<div id="Radio" class="tabcontent">
+  <h3>Radio</h3>
+  <p>???</p>
+</div>
+
+<div id="Muzyka" class="tabcontent">
+  <h3>Muzyka</h3>
+  <p>???</p>
+</div>
+
+<div id="Jazz" class="tabcontent">
+  <h3>Jazz</h3>
+  <p>???</p>
+</div>
+
+<div id="Aktualne" class="tabcontent">
+  <h3>Aktualne</h3>
+  <p>???</p>
+</div>
+
+<script>
+
+</script>
+     
+</body>
+</html> 
