@@ -110,35 +110,28 @@ function getFilesFromPlaylist(active){
 Buffer.prototype.pars = function() {return this.toString().trim();};
 		
 function parseMpcInfo(f){
-	var ret = {"type":"info","active":"","title":"???","info":"???","vol":"","extra":"","actualPlaylist":actualPlaylist};
-	//console.log("\n#114 infooooooooooMPC",f.length,f,typeof(f));
+	var ret = {"type":"info","active":"","title":"???","info":"???","vol":"","extra":"","actualPlaylist":actualPlaylist,"raw":f};
 	if (f.length===0) {return ret;}
-	var infoarr=String(f).split("\n");
-	//console.log(infoarr.length,infoarr);
 	
+			var mm = f.match(/\.*?#(.*?)\/.*?\nvolume: (.*?)% .*?repeat: (.*?) .*?random: (.*?) .*?single: (.*?) .*?/m);	 	
+			console.log('mm=',mm);
+			if (mm) {
+				ret.mm = mm;
+				if (mm[1]) ret.active = mm[1];
+				if (mm[2]) ret.vol    = mm[2];
+				if (mm[3]) ret.rnd   = mm[3]; 
+				if (mm[4]) ret.repeat   = mm[4]; 
+				if (mm[5]) ret.single   = mm[5]; 
+			}
+	
+	var infoarr=String(f).split("\n");
 	if (infoarr.length==4) {ret.title="ERROR"; ret.info=infoarr[3]; return ret;}
-	//if (infoarr.length==4) {return {"error":infoarr[3],"info":infoarr[3]}}
 	var info = String(f).split("\n")[0];
 	var arr = info.split("/");
-	//console.log(arr,'===',arr.length);
 	ret.title=arr[0];
 	var last = arr.length-1;
 	if (last>0) ret.info = arr[last];
 	if (last>1) ret.info = arr[last-1]+" > "+arr[last];
-	//if (arr.length>2) {var r = arr.pop(); ret.info = r+'::'+ret.info;}
-	//{console.log('\n...........................');	console.log(f);	console.log('...........................');}
-	var h = f.match(/\.*?#(.*?)\/.*?\nvolume: (.*?)%.*?random: (.*?) /m);	 
-	//{console.log('\n**************');	console.log(h);	console.log('***********************************');}
-	if (h){
-		if (h[1]) ret.active = h[1];
-		if (h[2]) ret.vol    = h[2];
-		if (h[3]) {ret.rnd   = h[3]; ret.title +=" rnd:"+h[3];}
-	}
-	//console.log("ret.active && actualPlaylist != radio",ret.active,actualPlaylist,ret.active && actualPlaylist != "radio");
-	if (ret.active && actualPlaylist != "radio") {
-		//ret.extra = getFilesFromPlaylist(ret.active);
-	}
-	//console.log('\n= = = = = = = = = /113 RET info=\n',ret);
 	return ret;
 }
 			
@@ -146,14 +139,9 @@ function parseMpcInfo(f){
 			
 	function sendInfo(res,ret){
 		var j = JSON.stringify([ret]);
-		//res.setHeader('Content-Type', 'application/json');
-		//res.setHeader('Access-Control-Allow-Origin', '*');
-		//res.writeHead({'Content-Type':'text/html','Access-Control-Allow-Origin':'*'});
-		//res.writeHead({'Content-Type':'application/json','Access-Control-Allow-Origin':'*'});
-			//res.setHeader("Content-Type", "application/json");
-			res.setHeader("Access-Control-Allow-Origin", "*");
-			res.setHeader("Access-Control-Allow-Methods", "*");
-			res.setHeader("Access-Control-Allow-Headers", "*");
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		res.setHeader("Access-Control-Allow-Methods", "*");
+		res.setHeader("Access-Control-Allow-Headers", "*");
 		
 		res.send(j);
 	}	
@@ -263,7 +251,7 @@ app.post("/radio/*", function(req, res){
 	if (param=="0") param="stop";
 	var mpcexe = "mpc play "+param;
 	if (param=="stop" || param=="play" || param=="current" || param=="next" || param=="prev" || param=="pause"|| param=="playlist" ) mpcexe = "mpc "+param;
-	if (param=="info") mpcexe = "mpc current";
+	if (param=="info") mpcexe = "mpc";
 	if (param=="seek") mpcexe = "mpc seek +20%";
 	//console.log('/237 radio PARAM=',param,mpcexe);
 		try {
@@ -369,9 +357,8 @@ server.listen(port);
 
 console.log("~~~EXPRESS.JS~~~//:"+port+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 setTimeout(function(){console.log("myIP="+myIP,"debug="+debug,"args=",args);},750);
- 
-	//console.log('query=',req.query);
-	//console.log('params=',req.params);
-	//console.log('url=',req.url);
-	//console.log('method=',req.method);
-//nodemon --debug /home/pi/zerro/radio/index.js
+
+
+
+
+
