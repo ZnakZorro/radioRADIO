@@ -12,7 +12,7 @@ var fs       = require("fs");
 var DS="/";
 var port = 8888;
 var startPage = "/public/";
-var actualPlaylist = "mpc";
+var actualPlaylist = "radio";
 
 //var debug = true;
 var myIP  = "127.0.0.1";
@@ -110,7 +110,7 @@ function getFilesFromPlaylist(active){
 Buffer.prototype.pars = function() {return this.toString().trim();};
 		
 function parseMpcInfo(f){
-	var ret = {"type":"info","active":"","title":"???","info":"???","vol":"","extra":""};
+	var ret = {"type":"info","active":"","title":"???","info":"???","vol":"","extra":"","actualPlaylist":actualPlaylist};
 	//console.log("\n#114 infooooooooooMPC",f.length,f,typeof(f));
 	if (f.length===0) {return ret;}
 	var infoarr=String(f).split("\n");
@@ -234,14 +234,14 @@ app.post("/playlist", function(req, res){
 	var arr = info.split("\n");
 	var ret = JSON.stringify(arr);
 	//console.log(ret)
-	sendInfo(res,{'type':'playlist','playlist':arr});
+	sendInfo(res,{'type':'playlist','playlist':arr,"actualPlaylist":actualPlaylist});
 });
 app.post("/playfile/*", function(req, res){
-	console.log('#240=',req.params);
+	//console.log('#240=',req.params);
 	var param = req.params[0];
-	console.log('#242=',param);
+	//console.log('#242=',param);
 	var dir   = execSync("egrep -v '(^#|^\s*$|^\s*\t*#)' /etc/mpd.conf | grep playlist_directory | awk '{print $2}' | tr --delete '\"'").pars();
-	console.log('#244=',dir);
+	//console.log('#244=',dir);
 	var playlists   = getFiles(dir);
 	var txt   = readHTMLfile(dir+'/'+param+'.m3u');
 	var playfiles = txt.split("\n");
@@ -252,7 +252,7 @@ app.post("/playfile/*", function(req, res){
 	});
 	console.log(playfiles.length);
 	
-	sendInfo(res,{'type':'playfiles','playfiles':playfiles,'playlists':playlists});
+	sendInfo(res,{'type':'playfiles','playfiles':playfiles,'playlists':playlists,"actualPlaylist":actualPlaylist});
 });
 
 
