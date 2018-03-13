@@ -116,7 +116,7 @@ function parseMpcInfo(f){
 	if (f.length===0) {return ret;}
 	
 			var mm = f.match(/\.*?#(.*?)\/.*?\nvolume: (.*?)% .*?repeat: (.*?) .*?random: (.*?) .*?single: (.*?) .*?/m);	 	
-			console.log('mm=',mm);
+			//console.log('mm=',mm);
 			if (mm) {
 				ret.mm = mm;
 				if (mm[1]) ret.active = mm[1];
@@ -176,6 +176,25 @@ app.post("/play", function(req, res){
 	sendInfo(res,ret);
 });
 
+app.post("/radioplaylist", function(req, res){
+	//var param=req.params[0];
+	//console.log(__dirname+'public/radio.json');
+	var json = readHTMLfile(__dirname+'/public/radio.json');
+	var rlist = JSON.parse(json);
+	var radioplaylist = [];
+	rlist.forEach(function(v,k){
+		//console.log(k,v);
+		radioplaylist.push(v.title);
+	});
+	//var radioplaylist = JSON.parse(json);
+	//console.log(json);
+	//var info = execSync("mpc playlist").pars();
+	//var arr = info.split("\n");
+	//var ret = JSON.stringify(arr);
+	//console.log(ret)
+	sendInfo(res,{'type':'playlist','playlist':radioplaylist,"actualPlaylist":actualPlaylist});
+});
+
 app.post("/playlist", function(req, res){
 	//var param=req.params[0];
 	var info = execSync("mpc playlist").pars();
@@ -184,6 +203,8 @@ app.post("/playlist", function(req, res){
 	//console.log(ret)
 	sendInfo(res,{'type':'playlist','playlist':arr,"actualPlaylist":actualPlaylist});
 });
+
+
 app.post("/playfile/*", function(req, res){
 	//console.log('#240=',req.params);
 	var param = req.params[0];
@@ -198,7 +219,7 @@ app.post("/playfile/*", function(req, res){
 		//console.log(k,v);
 		playfiles[k]=v.replace(param+'/','');
 	});
-	console.log(playfiles.length);
+	//console.log(playfiles.length);
 	
 	sendInfo(res,{'type':'playfiles','playfiles':playfiles,'playlists':playlists,"actualPlaylist":actualPlaylist});
 });
