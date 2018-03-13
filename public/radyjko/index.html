@@ -3,96 +3,98 @@
 <head>
 <meta charset="utf-8"> 
 	<title>rIO</title> 
+	<link rel="manifest" href="./radyjko.json">
 	<meta name="viewport" content="width=device-width,initial-scale=1"> 
 	<meta name="mobile-web-app-capable" content="yes"> 
-	<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA/8pYAP+XAAD/wVoA/+u0AP/qsgD/ynsA/9hvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICAAAAAAAAAAAAAAAAAgQEBAAAAAAAAAAAAAAAAgQBAQEDAAAAAAAAAAAAAAIEAQEBAwAAAAAAAAAAAAAAAgQEBAMAAAIAAAAAAAAAAAACAgIGAAAAAgAAAAAAAAAAAAACBgAAAAcCAAAAAAAAAAAAAgYAAAAHAgAAAAAAAAAAAAIGAAAABwIAAAAAAAAAAAACBgAAAgIAAAAAAAAAAAAAAgYCAgcCAAAAAAAAAAAAAAIFBwcHAAAAAAAAAAAAAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD//wAA8f8AAOH/AADA/wAAwP8AAODfAADw7wAA/OcAAPznAAD85wAA/M8AAPwPAAD8HwAA/n8AAP//AAA="  />
-	<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAD//vsA1h4OAP/9/gDgml8A8P/5AP/63QDn+vcA/PX8APW7bQD//fYA//n5AP/qjgD/87cA//z5AP/x3gD/7+wA//r/APz9/wDWeBIA8f/6AP/zwADqmmgA9r1YAPb6xgDxw1gA1ruqAP/+/QDaaEAA/6YtAP//8gD+974Az35FAKxpSAD5+/4A+f/7AMWUSgD/8vYA+//7AP//+wDs//wAulASAPOuawD/76wA//D0APL7/wDRYkIA+6cbANeinwCfNgoA87VHAOG8oAD67aoA//fQAPr+/wDeQgcA/P7/AP/y7wD//v8AkEkxAPr/0wDw7asA0Fs+AP2bJQD+5aAA9//9AMGNRwD/4dUA/d7NAP6yLwCbIRUA/v/9AP+4NwD//fIA+v/1APnGSgD+y10Ar0MxALCJXAD29vYA//7fALqMhQDz//4A9f/+AP/94gD0zXEA//bEAPn//gD6//4AeSoXAP7duADku6UA///+APv/3QD/+usA//z2APf++QDp/PcA7fn3AOymUwC7j1wA/f/2APvy6QD/8/8A//T0APP//wD5/P8A/vf0APb//wD//fwA+v//AI1LLgD7//8AznAeAP3//wDpkRsAxHJTAP///wD9//cA4qKaAPakFwC3ek4A//zvAP39/QDt/vsA/JtaAP/07QD//+cA/+e/APf6/gD8//gA/9uOAJhSNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdHR0dHRbEzVSEQB0dHR0dHR0dHR0bV5FWGAQdHR0dHR0dHRWRg17AS8hV3R0dHR0dHR0GmgmdjYwQwZ0dHR0dHR0dAJ1PQ9CK39MdHR0dHR0dHRkbg4SPhxwBThfenR0dHR0SHxNRDFHcnkZbwJ0dHR0dEliQUtKGHdnWmsCdHR0dHQdAyOCC1QufjJmgXR0dHR0ZR9jPzM8Fl0oBDd0dHR0dFEseCoUHghqcTlbdHR0dHRAgCAMNBcpCnR0dHR0dHR0QGmDVU87FSR0dHR0dHR0dHF0UFlTXHMJdHR0dHR0dHRxTmw6Gy19B3R0dHR0dHR0b3RAYSdrJSJ0dHR0dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
+	<link rel="icon" type="image/png" size="128x128" href="radyjko.png"> 
+	<link rel="shortcut icon" type="image/png" size="128x128" href="radyjko.png"> 
 <style>
-/*.c0,.c1,.c2,.c3,.c4{color:#fff!important}.c0{background:#369}.c1{background:#007bff}.c2{background:#6610f2}.c3{background:#6f42c1}.c4{background:#e83e8c}.c5{background:#dc3545;color:#000!important}.c6{background:#fd7e14;color:#fff!important}.c7{background:#ffc107;color:#000!important}.c8{background:#28a745;color:#fff!important}.c9{background:#20c997;color:#000!important}.c10,.c11,.c12,.c13,.c14,.c16,.c17,.c18,.c19,.c20{color:#fff!important}.c10{background:#17a2b8}.c11{background:#868e96}.c12{background:#3a3964}.c13{background:#007bff}.c14{background:#868e96}.c15{background:#28a745;color:#fff!important}.c16{background:#17a2b8}.c17{background:#ffc107}.c18{background:#dc3545}.c19{background:#700014}.c20{background:#0b6e2f}.c21{background:#ea6153;color:#000!important}.c22{background:#d14233;color:#fff!important}.c23,.c24{color:#000!important}.c23{background:#fbfcfc}.c24{background:#cbd0d3}*/
-.c0,.c1,.c2,.c3,.c4{color:#fff}.c0{background:#369}.c1{background:#007bff}.c2{background:#6610f2}.c3{background:#6f42c1}.c4{background:#e83e8c}.c5{background:#dc3545;color:#000}.c6{background:#fd7e14;color:#fff}.c7{background:#ffc107;color:#000}.c8{background:#28a745;color:#fff}.c9{background:#20c997;color:#000}.c10,.c11,.c12,.c13,.c14,.c16,.c17,.c18,.c19,.c20{color:#fff}.c10{background:#17a2b8}.c11{background:#868e96}.c12{background:#3a3964}.c13{background:#007bff}.c14{background:#868e96}.c15{background:#28a745;color:#fff}.c16{background:#17a2b8}.c17{background:#ffc107}.c18{background:#dc3545}.c19{background:#700014}.c20{background:#0b6e2f}.c21{background:#ea6153;color:#000}.c22{background:#d14233;color:#fff}.c23,.c24{color:#000}.c23{background:#fbfcfc}.c24{background:#cbd0d3}
+.c0{background:#369}.c1{background:#007bff}.c2{background:#6610f2}.c3{background:#6f42c1}.c4{background:#e83e8c}.c5{background:#dc3545}.c6{background:#fd7e14}.c7{background:#ffc107}.c8{background:#28a745}.c9{background:#20c997}.c10{background:#17a2b8}.c11{background:#868e96}.c12{background:#3a3964}.c13{background:#007bff}.c14{background:#868e96}.c15{background:#28a745}.c16{background:#17a2b8}.c17{background:#ffc107}.c18{background:#dc3545}.c19{background:#700014}.c20{background:#0b6e2f}.c21{background:#ea6153}.c22{background:#d14233}.c23{background:#fbfcfc}.c24{background:#cbd0d3}
+.c5,.c6,.c7,.c9,.c10,.c11,.c14,.c16,.c17,.c18,.c21,.c22,.c24,.c23{color:#222}
+.c0,.c1,.c2,.c3,.c4,.c8,.c12,.c13,.c15,.c19,.c20{color:#fff}
+
 *,:after,:before {box-sizing: border-box}
 body {
     font-family: Verdana,Arial;
     font-size: 16px;
     padding: 0;
     margin: 0;
+	background:#222;
+	color:#fff;
+	border:0;
 }
-
 
 button {
     font-size: 16px;
-    margin: 0.25em;
-    padding: 0.5em;
-    border: 0;
-    border-radius: 4px;
+    margin: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+	min-width:5.2rem;
+	border:0;
 }
 button:focus {outline:0;}
 button:active, button:focus  {background:#666; color:white;}
 .active{
-    /*background: #000!important;*/
-    color: #fff!important;
-	background-image: linear-gradient(to bottom, #bbb, #000, #bbb);
+    color: #fff;
+	background-image: linear-gradient(to bottom, #444, #888, #444));
 	transition: 0.5s;
 }
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+	color:#fff;
+    background-color: #444;
+	padding:2px 0 0;
 }
-
 .tab button {
     float: left;
-    border: none;
     outline: none;
     cursor: pointer;
-    padding: 0.75rem 1rem;
+    padding: 0.65rem 1rem;
     transition: 0.5s;
     font-size: 1rem;
-    border: 1px solid white;
-    min-width: 7rem;
-    margin-left: 0;
-    margin-right: 0;
+    min-width: 7.3rem;
+    margin: 1px;
+    background: #666;
+    color: white;
+	border-radius:0;
 }
 
 .tab button:hover {
-    background-color: #ddd;
+    background-color: #aaa;
 }
-
 .tab button.active {
-    background-color: #828282!important;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    background-color:#bbb;
+	color:#222;
 	background-image: inherit;
 }
-
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
 }
-
+.line button{
+	border-radius:0;
+	width:40%;
+	max-width:8rem;
+}
 #info {
     position: fixed;
-	top:0; 
-	left:0;
+    top: 0;
+    left: 0;
     background: #eee;
     color: #222;
-    height: 3.3em;
-    padding: 0.5em;
+    padding: 0.2rem;
     overflow: hidden;
+    width: 100%;
+	height: 3.8rem;
 }
-
+.pass {height:3.8rem;}
 </style>
-
 <script>
 "use strict";
 const $=(y)=>document.querySelector(y);
 const $$=(y)=>document.querySelectorAll(y);
-
 let radioURL = 'http://82.145.73.28:8888/';
 let actualPlaylist = 'radio';
-
 	function showErrorMessage(r){console.log(r);}
 	
 	function getXHR(url,callback){
@@ -122,7 +124,7 @@ let actualPlaylist = 'radio';
 	
 	function setActive(nr){
 		nr = parseInt(nr);
-		console.log(nr)
+		//console.log(nr)
 		let blok = $$('#'+firstUp(actualPlaylist)+' button');		
 		for (let b in blok){
 			let bb = parseInt(b)+1;
@@ -140,23 +142,39 @@ let actualPlaylist = 'radio';
 	
 const playRadio = function(nr){
 	getXHR(radioURL+'radio/'+nr,radioInfo);
-	setActive(nr)
+	setActive(nr);
+	setTimeout(function(){info()},2000);
 }	
 
-
+// info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info * 
+// info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info * 
+// info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info *  info * 
 const radioInfo = function(ret){
 	let r = (ret)[0];
-	console.log('radioInfo=',r);
-	console.log('r.actualPlaylist=',r.actualPlaylist);
+	//console.log('radioInfo=',r);
+	//console.log('r.actualPlaylist=',r.actualPlaylist,r.type);
 	if (r.actualPlaylist) actualPlaylist=r.actualPlaylist;
+
 	
+	
+	/*
+	repeat:"off"
+	rnd:"off"
+	single:"off"
+	title:"Radio TOK FM - posluchaj, aby zrozumiec"
+	type:"info"
+	vol:"87"
+	*/
 	if (r.title){
 		$('#info').innerHTML = r.title+'<br />';
-		$('#info').innerHTML = r.info+'<br />';
-	}
+		if (r.active) $('#info').innerHTML += '#'+r.active+'; ';
+		if (r.single) $('#info').innerHTML += 'Single: '+r.single+'; ';
+		if (r.vol) $('#info').innerHTML += 'Vol: '+r.vol+'%; ';
+		
+	} else $('#info').innerHTML = r.info+'<br />';
 	
 	if (r.type && r.playfiles && r.type === 'playfiles'){
-		let opened = $('.open');
+		let opened = $('.open');opened.innerHTML ='';
 		opened.innerHTML ='<h3>Czekamy...</h3>';
 		let ll=0;
 		let html ='';
@@ -170,14 +188,12 @@ const radioInfo = function(ret){
 		}
 		opened.innerHTML = html;
 	}
-
 	if (r.type && r.playlist && r.type === 'playlist'){
-		let opened = $('.open');
-		opened.innerHTML ='';
+		console.log('#177=',r.type)
+		let opened = $('.open');opened.innerHTML ='';
 		let ll=0;
 		let html ='';
 		for(let l in r.playlist){
-			
 			ll++;
 			let o = r.playlist[l];
 			let oo =o.replace('.mp3','').replace('http://','');
@@ -186,12 +202,12 @@ const radioInfo = function(ret){
 		}
 		opened.innerHTML = html;
 	}
+
 	if (r.active) setActive(r.active);
 	if (r.vol) $('#gear-vol').value=r.vol;
 	
-
 }
-
+ 
 function akcja(folder){
 	console.log(folder);
 	if (folder==='Ustaw'){
@@ -199,7 +215,8 @@ function akcja(folder){
 	}
 	else if (folder==='Radio'){
 		console.log('akcja Radio');
-		getXHR(radioURL+'playlist',radioInfo);
+		getXHR(radioURL+'folder/radio',radioInfo);
+		getXHR(radioURL+'radioplaylist',radioInfo);
 	}
 	else {
 		console.log('akcja '+folder);
@@ -208,7 +225,9 @@ function akcja(folder){
 		if (actualPlaylist != folder) getXHR(radioURL+'folder/'+folder,radioInfo);
 		getXHR(radioURL+'playfile/'+folder,radioInfo);
 	}
+	setTimeout(function(){info()},2000);
 }
+
 
 function openPlaylist(evt, folder) {
 	if (evt) akcja(folder);
@@ -226,68 +245,73 @@ function openPlaylist(evt, folder) {
 	$('#'+folder).classList.add("open");
 	if (evt) evt.currentTarget.classList.add("active");
 	else $('button').classList.add("active");
-	setTimeout(function(){info()},1000);
-	setTimeout(function(){info()},3000);
+	setTimeout(function(){info()},2000);
+	setTimeout(function(){info()},5000);
 }
-
 
 function Volume(t){
 	console.log(t.value)
 	getXHR(radioURL+'vol/'+t.value,radioInfo);
 }
-
 function info(){getXHR(radioURL+'radio/info',radioInfo);}
-
 // DOM READY
 document.addEventListener('DOMContentLoaded', function() {
 	radioURL = window.location.origin+'/';
 	openPlaylist(null, 'Ustaw')
 	info();
-	setInterval(function(){info();},20000);
+	setInterval(function(){info();},30000);
 	
-	
+	//for(let i=0; i<29; i++){$('#test').innerHTML += '<button class="c'+i+'" data-radio="play" onclick="play(this)">C'+i+'</button>'}
 });// dom ready
 
-</script>
+function play(ten){
+	let val = ten.dataset.radio;
+	getXHR(radioURL+'radio/'+val,radioInfo);
+	setTimeout(function(){info();},1000);
+}
 
+
+</script>
 </head>
 <body>
-
 <div id="info">???</div>
-<div style="height:4.15rem;">.</div>
-
+<div class="pass">.</div>
 <div class="tab">
 	<button class="tablinks active" onclick="openPlaylist(event, 'Ustaw')">Ustaw</button>
 	<button class="tablinks" onclick="openPlaylist(event, 'Radio')">Radio</button>
 	<button class="tablinks" onclick="openPlaylist(event, 'Muzyka')">Muzyka</button>
 	<button class="tablinks" onclick="openPlaylist(event, 'Jazz')">Jazz</button>
 	<button class="tablinks" onclick="openPlaylist(event, 'Aktualne')">Aktualne</button>
+	<button class="tablinks" onclick="info(false)">Info</button>
 </div>
-
 <div id="Ustaw" class="tabcontent">
-  <p>Głosnośc</p>
+  <p>Głosność</p>
   <input onchange="Volume(this)" id="gear-vol" class="volume" type="range" min="40" max="100" value="85" style="width:100%;">
+		
+		<div class="line">
+			<button type="button" class="c1" data-radio="stop" onclick="play(this)">stop</button>
+			<button type="button" class="c19" data-radio="play" onclick="play(this)">play</button>
+			<button type="button" class="c18" data-radio="prev" onclick="play(this)">prev</button>
+			<button type="button" class="c12" data-radio="next" onclick="play(this)">next</button>
+			<button type="button" class="c7" data-radio="seek" onclick="play(this)">skocz</button>
+		</div>
+		<div class="line" id="test"></div>
+  
 </div>
-
 <div id="Radio" class="tabcontent">
 	<h3>Czekamy...</h3>
 </div>
-
 <div id="Muzyka" class="tabcontent">
 	<h3>Czekamy...</h3>
 </div>
-
 <div id="Jazz" class="tabcontent">
   <h3>Jazz</h3>
   <p>???</p>
 </div>
-
 <div id="Aktualne" class="tabcontent">
 	<h3>Czekamy...</h3>
 </div>
-
 <script>
-
 </script>
      
 </body>
