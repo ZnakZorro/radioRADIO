@@ -63,7 +63,7 @@ res.end(skrypt+'\n');
 
 function sendImage(res,imgURL){
 	console.log(imgURL);
-	var img = fs.readFileSync(imgURL);
+	var img = fs.readFileSync('/home/pi/app/radio/public/'+imgURL);
 	res.writeHead(200, {'Content-Type': 'image/jpg'});
 	res.end(img,'binary');	
 }
@@ -100,7 +100,7 @@ http.createServer((req, res) => {
 			if (cmd ==='temp')     command='/opt/vc/bin/vcgencmd measure_temp';
 			if (cmd ==='wifi')     command='cat /proc/net/wireless';
 			if (cmd ==='cpu')      command="grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "+'"%"'+"}'";
-			if (cmd ==='camera')   command='raspistill --nopreview --timeout 1 -rot 180 -w 480 -h 320 -o /home/pi/app/radio/public/1.jpg';
+			if (cmd ==='camera')   command='raspistill --nopreview --timeout 1 -rot 180 -w 800 -h 600 -o /home/pi/app/radio/public/1.jpg';
 			
 			 
 
