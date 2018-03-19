@@ -3,7 +3,7 @@ const moddir      = '/usr/local/lib/node_modules/';
 const http = require('http');
 const exec = require('child_process').exec;
 //const request     = require(moddir+"request");
-//const fs          = require('fs');
+const fs          = require('fs');
 
 
 function sendPage(res,message,command,skrypt){
@@ -49,6 +49,9 @@ a {text-align:center; padding:0.33em; margin:0.2em; background:#ddd;line-height:
 		<a href="/wifi">WIFI</a>
 		<a href="/cpu">CPU</a>
 	</div>
+	<div>
+		<a href="/camera">Klik</a>
+	</div>
 	<div>${command}</div>
 	<div>${message}</div>
 </div>
@@ -58,10 +61,22 @@ a {text-align:center; padding:0.33em; margin:0.2em; background:#ddd;line-height:
 res.end(skrypt+'\n');	
 }
 
+function sendImage(res,imgURL){
+	console.log(imgURL);
+	var img = fs.readFileSync(imgURL);
+	res.writeHead(200, {'Content-Type': 'image/jpg'});
+	res.end(img,'binary');	
+}
+
 http.createServer((req, res) => {
 	let arr = (req.url).split('/')
 	let s= arr.shift();
-	console.log('\narr=',arr);
+	console.log('#67arr=',arr);
+	var akcja = arr[0];
+	console.log('#69 akcja=',akcja);
+	
+	if (akcja =='favicon.ico') {res.end(); return;}
+	if (akcja =='1.jpg') {sendImage(res,'1.jpg'); return;}
 	
 	let message ='';
 	let skrypt ='';
@@ -85,6 +100,8 @@ http.createServer((req, res) => {
 			if (cmd ==='temp')     command='/opt/vc/bin/vcgencmd measure_temp';
 			if (cmd ==='wifi')     command='cat /proc/net/wireless';
 			if (cmd ==='cpu')      command="grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "+'"%"'+"}'";
+			if (cmd ==='camera')   command='raspistill --nopreview --timeout 1 -rot 180 -w 480 -h 320 -o /home/pi/app/radio/public/1.jpg';
+			
 			 
 
 			//-----------------------------------------------
@@ -100,7 +117,9 @@ http.createServer((req, res) => {
 				if (stdout) info += stdout;
 				if (stderr) info += stderr;
 				message += '<pre>'+info+'</pre>';
+				if (akcja=='camera') message = '<img src="1.jpg" />';
 				sendPage(res,message,command,skrypt);
+				
 			});
 		} catch(err){console.error(0,err);}
 	} else {
