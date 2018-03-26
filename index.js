@@ -1,40 +1,32 @@
 #!/usr/local/bin/node
-
 "use strict";
-
 //var http = require('http');
 var express  = require("/usr/local/lib/node_modules/express");
 var execSync = require("child_process").execSync;
 //var path     = require("path");
 var fs       = require("fs");
 //var bodyParser = require('/usr/local/lib/node_modules/body-parser')
-
 var DS="/";
 var port = 8888;
 var startPage = "/public/";
 var actualPlaylist = "radio";
-
 //var debug = true;
 var myIP  = "127.0.0.1";
 var debug = true;
-
 var args = process.argv.slice(2);
 //console.log(process.argv);
 if(args[0]==="-q") debug=false;
-
 
 var getDirectories = function (srcpath) {
 	return fs.readdirSync(srcpath).filter(function(file) {
 		return fs.statSync(path.join(srcpath, file)).isDirectory();
 	});
 };
-
 var getFiles = function (dir) {
 	return fs.readdirSync(dir).filter(function (file) {
 		return fs.statSync(dir+"/"+file).isFile();
 	});
 };
-
 
 function readHTMLfile(filedir){
 	if (fs.lstatSync(filedir).isFile())	{
@@ -51,8 +43,6 @@ function readHTMLfile(filedir){
 		}
 	}	else return "";
 }
-
-
 
 function getFilesFromPlaylist(active){
 	
@@ -99,19 +89,18 @@ function getFilesFromPlaylist(active){
 	console.log('infos=',infos);
 	
 	if (arr[0]=="http:") {return({"info":infos});}
-
 	if (arr.length==2) return({"info":infos,"songs":playlist[arr[0]][arr[1]]});
 	if (arr.length==3) return({"info":infos,"songs":playlist[arr[0]][arr[1]][arr[2]]});
 	
 	
 	return null;
 }
-
 Buffer.prototype.pars = function() {return this.toString().trim();};
-
 
 //qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq		
 function parseMpcInfo(f){
+	//console.log('#102=',f)
+
 	var ret = {"type":"info","active":"","title":"???","info":f,"vol":"","extra":"","actualPlaylist":actualPlaylist};
 	if (f.length===0) {return ret;}
 	
@@ -143,7 +132,6 @@ function parseMpcInfo(f){
 		res.send(j);
 	}	
 
-
 /* START ---------------------  START ---------------------  START --------------------- START */
 myIP=execSync("hostname -I").pars();
 var playlist = execSync("egrep -v '(^#|^\s*$|^\s*\t*#)' /etc/mpd.conf | grep playlist_directory | awk '{print $2}' | tr --delete '\"'").pars();
@@ -153,17 +141,14 @@ console.log("myIP="+myIP,"\nplaylist="+playlist,"\nmusicdir="+musicdir);
 	
 var app = express();
 var server  = require("http").createServer(app);
-
 //app.use(express.bodyParser());
 //app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({extended: true})); 
 
-
-
 app.use(express.static(__dirname + startPage));
 
-
 app.get("/*", function(req, res){
+	//console.log('#150=',req)
 	res.send(null);
 });
 
@@ -177,33 +162,22 @@ app.post("/play", function(req, res){
 });
 
 app.post("/radioplaylist", function(req, res){
-	//var param=req.params[0];
-	//console.log(__dirname+'public/radio.json');
-	var json = readHTMLfile(__dirname+'/public/radio.json');
-	var rlist = JSON.parse(json);
-	var radioplaylist = [];
-	rlist.forEach(function(v,k){
-		//console.log(k,v);
-		radioplaylist.push(v.title);
-	});
-	//var radioplaylist = JSON.parse(json);
-	//console.log(json);
-	//var info = execSync("mpc playlist").pars();
-	//var arr = info.split("\n");
-	//var ret = JSON.stringify(arr);
-	//console.log(ret)
-	sendInfo(res,{'type':'playlist','playlist':radioplaylist,"actualPlaylist":actualPlaylist});
+	//console.log(__dirname+'/public/radio.json');
+	var txt = readHTMLfile(__dirname+'/public/radio.json');
+	var obj = JSON.parse(txt);
+	//console.log('#radioplaylist 160=',obj.length);
+	sendInfo(res,{'type':'radioplaylist','playlist':obj,"actualPlaylist":actualPlaylist});
 });
+
 
 app.post("/playlist", function(req, res){
 	//var param=req.params[0];
 	var info = execSync("mpc playlist").pars();
 	var arr = info.split("\n");
-	var ret = JSON.stringify(arr);
-	//console.log(ret)
+
+	console.log('#playlist 170=',arr.length);
 	sendInfo(res,{'type':'playlist','playlist':arr,"actualPlaylist":actualPlaylist});
 });
-
 
 app.post("/playfile/*", function(req, res){
 	//console.log('#240=',req.params);
@@ -219,7 +193,7 @@ app.post("/playfile/*", function(req, res){
 		//console.log(k,v);
 		playfiles[k]=v.replace(param+'/','');
 	});
-	//console.log(playfiles.length);
+	console.log('#playfile188=',playfiles.length,param);
 	
 	sendInfo(res,{'type':'playfiles','playfiles':playfiles,'playlists':playlists,"actualPlaylist":actualPlaylist});
 });
@@ -245,7 +219,6 @@ app.post("/radio/*", function(req, res){
 	var ret  = parseMpcInfo(info);
 	sendInfo(res,ret);
 });
-
 app.post("/vol/*", function(req, res){
 	var param=req.params[0];
 	//console.log(param)
@@ -253,7 +226,6 @@ app.post("/vol/*", function(req, res){
 	var ret = parseMpcInfo(info);
 	sendInfo(res,ret);
 });
-
 app.post("/volume/*", function(req, res){
 	var param=req.params[0];
 	if (parseInt(param) >0) param = "+"+param;
@@ -268,7 +240,6 @@ app.post("/volume/*", function(req, res){
 	sendInfo(res,ret);
 });
 
-
 /*
 app.post("/seek/*", function(req, res){
 	var param=req.params[0];
@@ -279,7 +250,6 @@ app.post("/seek/*", function(req, res){
 	sendInfo(res,ret);
 });
 */
-
 app.post("/random/*", function(req, res){
 	var param=req.params[0];
 	//console.log(param)
@@ -287,7 +257,6 @@ app.post("/random/*", function(req, res){
 	var ret = parseMpcInfo(info);
 	sendInfo(res,ret);
 });
-
 app.post("/repeat/*", function(req, res){
 	var param=req.params[0];
 	//console.log(param)
@@ -295,7 +264,6 @@ app.post("/repeat/*", function(req, res){
 	var ret = parseMpcInfo(info);
 	sendInfo(res,ret);
 });
-
 app.post("/single/*", function(req, res){
 	var param=req.params[0];
 	//console.log(param)
@@ -303,7 +271,6 @@ app.post("/single/*", function(req, res){
 	var ret = parseMpcInfo(info);
 	sendInfo(res,ret);
 });
-
 app.post("/folder/*", function(req, res){
 	var username = __dirname.split(DS)[2];
 	var param=req.params[0];
@@ -325,7 +292,6 @@ app.post("/folder/*", function(req, res){
 	var ret = parseMpcInfo(info);
 	sendInfo(res,ret);
 });
-
 app.post("/system/*", function(req, res){
 	var param=req.params[0];
 	console.log("#323=system=",param)
@@ -333,8 +299,6 @@ app.post("/system/*", function(req, res){
 	var ret = parseMpcInfo(info);
 	sendInfo(res,ret);
 });
-
 server.listen(port);
-
 console.log("~~~EXPRESS.JS~~~//:"+port+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 setTimeout(function(){console.log("myIP="+myIP,"debug="+debug,"args=",args);},750);
