@@ -24,6 +24,7 @@ div {margin:1%; padding:0.5%;border-bottom:1px solid #e8e8e8; clear:both; backgr
 div.main {max-width:800px; margin:auto;}
 a,button {text-align:center; padding:0.2em; margin:0.2em; background:#ddd;line-height:1.5em;display: inline-block; border:1px solid gray; border-radius:0.5em;min-width:5.8em;text-decoration:none;}
 button:active,button:focus {outline: none;border-color:red;}
+pre {font-size:0.88em; width:100%; background:white;}
 </style>
 <script>
 function ajxx(u){if (confirm('Are you sure?')) ajx(u);}
@@ -39,7 +40,7 @@ function ajx(u){
 <body>
 <div class="wrap">
 <div class="main">
-<h3>SOS</h3>
+<h3>SOS...</h3>
 	<div>
 		<button onClick='location.href="/"'>reLoad</button>
 		<button onClick='ajx("/mpc/current")'>Info</button>
@@ -59,16 +60,18 @@ function ajx(u){
 	<div>
 		<button onClick='ajxx("/reboot")'>Reboot</button>
 		<button onClick='ajxx("/poweroff")'>PowerOFF</button>
-		<button onClick='ajxx("/reradio")'>reradio</button>
-		<button onClick='ajx("/psnode")'>psnode</button>
-		<button onClick='ajx("/psradio")'>psradio</button>
+		<button onClick='ajx("/psnode")'>PS node</button>
+		<button onClick='ajx("/psradio")'>PS radio</button>
+	</div>
+	<div>
+		<button onClick='ajxx("/reradio")'>reRADIO</button>
+		<button onClick='ajxx("/resos")'>reSOS</button>
+		
 	</div>
 	<div>
 		<button onClick='ajx("/psradio")'>psradio</button>
 		<button onClick='ajx("/killradio")'>killradio</button>
 		<button onClick='ajx("/startradio")'>startradio</button>
-		<button onClick='ajxx("/reradio")'>reradio</button>
-		
 	</div>
 
 	<div>
@@ -81,12 +84,12 @@ function ajx(u){
 		
 	</div>
 	<div>
-		<button onClick='ajx("/camera")'>CAMERA</button>
+		<button onClick='ajxx("/camera")'>CAMERA</button>
 	</div>
-	<div id="info"></div>
+	<span id="info"></span>
 	<!---->
-	<div id="command">${command}</div>
-	<div id="message">${message}</div>
+	<pre id="command">${command}</pre>
+	<pre id="message">${message}</pre>
 	<!---->
 </div>
 </div>
@@ -142,7 +145,9 @@ http.createServer((req, res) => {
 			if (cmd ==='psradio')     command= `ps -ef | grep /radio/index.js | grep -v grep | awk '{print $2}'`;
 			if (cmd ==='killradio')   command= `ps -ef | grep app/radio/index.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh`;
 			if (cmd ==='startradio')  command= `/usr/local/bin/node /home/pi/app/radio/index.js & > /dev/null`;
+			
 			if (cmd ==='reradio')     command= `ps -ef | grep app/radio/index.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/radio/index.js & > /dev/null`;
+			if (cmd ==='resos')     command= `ps -ef | grep app/radio/sos.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/radio/sos.js & > /dev/null`;
 			console.log(command);
 			
 			 
@@ -159,7 +164,7 @@ http.createServer((req, res) => {
 				let info = '';
 				if (stdout) info += stdout;
 				if (stderr) info += stderr;
-				message += '<pre>'+info+'</pre>';
+				message += info;
 				if (akcja=='camera') message = '<img src="1.jpg" />';
 				sendPage(res,message,command,skrypt);
 				
