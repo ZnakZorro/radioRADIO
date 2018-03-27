@@ -18,44 +18,79 @@ res.write(`
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAT0EyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAF//wAAv/8AAN//AADv/wAA9/8AAPv/AAD9/wAA/v8AAP9/AAD/vwAA/98AAP/vAAD/9wAA//sAAP/9AAD//gAA" />
 <style>
-body{font:normal 17px verdana} a{text-decoration:none; margin:0;}
+body,button{font:normal 17px verdana}
 div.wrap {background:white; position:relative;}
 div {margin:1%; padding:0.5%;border-bottom:1px solid #e8e8e8; clear:both; background:#f8f8f8;}
 div.main {max-width:800px; margin:auto;}
-a {text-align:center; padding:0.33em; margin:0.2em; background:#ddd;line-height:1.5em;display: inline-block; border:1px solid gray; border-radius:0.5em;min-width:5.8em;}
+a,button {text-align:center; padding:0.2em; margin:0.2em; background:#ddd;line-height:1.5em;display: inline-block; border:1px solid gray; border-radius:0.5em;min-width:5.8em;text-decoration:none;}
+button:active,button:focus {outline: none;border-color:red;}
 </style>
+<script>
+function ajxx(u){if (confirm('Are you sure?')) ajx(u);}
+function ajx(u){
+	//console.log(u);
+	fetch(u).then(function(res) {return res.text();}).then(function(text) {
+	var arr = text.split('<!---->');
+	//console.log(arr);
+	document.getElementById("info").innerHTML = arr[2];
+}).catch(error => console.error('Error:', error))}
+</script>
 </head>
 <body>
 <div class="wrap">
 <div class="main">
 <h3>SOS</h3>
 	<div>
-		<a href="/">Start</a>
-		<a href="/mpc/play">Play</a>
-		<a href="/mpc/stop">Stop</a>
-		<a href="/mpc/current">Info</a>
-		<a href="/mpc/play/1">TOK FM</a>
-		<a href="/mpc/play/2">RMF Classic</a>
-		<a href="/mpc/play/61">Classic 61</a>
-		<a href="/mpc/play/57">Classic 57</a>
+		<button onClick='location.href="/"'>reLoad</button>
+		<button onClick='ajx("/mpc/current")'>Info</button>
+		<button onClick='ajx("/mpc/play")'>Play</button>
+		<button onClick='ajx("/mpc/stop")'>Stop</button>
+		<button onClick='ajx("/mpc/prev")'>Prev</button>
+		<button onClick='ajx("/mpc/next")'>Next</button>
 	</div>
 
 	<div>
-		<a href="/reboot">reboot</a>
-		<a href="/poweroff">poweroff</a>
-		<a href="/ls/-l">LS</a>
-		<a href="/df/-h">DF</a>
-		<a href="/temp">Temp</a>
-		<a href="/wifi">WIFI</a>
-		<a href="/cpu">CPU</a>
+		<button onClick='ajx("/mpc/play/1")'>TOK FM</button>
+		<button onClick='ajx("/mpc/play/2")'>RMF Classic</button>
+		<button onClick='ajx("/mpc/play/5")'>Szczecin</button>
+		<button onClick='ajx("/mpc/play/8")'>Trójka</button>
+	</div>
+
+	<div>
+		<button onClick='ajxx("/reboot")'>Reboot</button>
+		<button onClick='ajxx("/poweroff")'>PowerOFF</button>
+		<button onClick='ajxx("/reradio")'>reradio</button>
+		<button onClick='ajx("/psnode")'>psnode</button>
+		<button onClick='ajx("/psradio")'>psradio</button>
 	</div>
 	<div>
-		<a href="/camera">Klik</a>
+		<button onClick='ajx("/psradio")'>psradio</button>
+		<button onClick='ajx("/killradio")'>killradio</button>
+		<button onClick='ajx("/startradio")'>startradio</button>
+		<button onClick='ajxx("/reradio")'>reradio</button>
+		
 	</div>
-	<div>${command}</div>
-	<div>${message}</div>
+
+	<div>
+		<button onClick='ajx("/ls/-l")'>LS</button>
+		<button onClick='ajx("/df/-h")'>DF</button>
+		<button onClick='ajx("/temp")'>Temp</button>
+		<button onClick='ajx("/wifi")'>WIFI</button>
+		<button onClick='ajx("/cpu")'>CPU</button>
+		
+		
+	</div>
+	<div>
+		<button onClick='ajx("/camera")'>CAMERA</button>
+	</div>
+	<div id="info"></div>
+	<!---->
+	<div id="command">${command}</div>
+	<div id="message">${message}</div>
+	<!---->
 </div>
 </div>
+
 </body></html>	
 `);
 res.end(skrypt+'\n');	
@@ -95,12 +130,20 @@ http.createServer((req, res) => {
 					}
 				}
 			}
+			
 			if (cmd ==='reboot')   command='sudo reboot';
 			if (cmd ==='poweroff') command='sudo poweroff';
 			if (cmd ==='temp')     command='/opt/vc/bin/vcgencmd measure_temp';
 			if (cmd ==='wifi')     command='cat /proc/net/wireless';
 			if (cmd ==='cpu')      command="grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "+'"%"'+"}'";
 			if (cmd ==='camera')   command='raspistill --nopreview --timeout 1 -rot 180 -w 800 -h 600 -o /home/pi/app/radio/public/1.jpg';
+			if (cmd ==='psnode')   command= `ps -ef | grep node | grep -v grep`;
+			
+			if (cmd ==='psradio')     command= `ps -ef | grep /radio/index.js | grep -v grep | awk '{print $2}'`;
+			if (cmd ==='killradio')   command= `ps -ef | grep app/radio/index.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh`;
+			if (cmd ==='startradio')  command= `/usr/local/bin/node /home/pi/app/radio/index.js & > /dev/null`;
+			if (cmd ==='reradio')     command= `ps -ef | grep app/radio/index.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/radio/index.js & > /dev/null`;
+			console.log(command);
 			
 			 
 
