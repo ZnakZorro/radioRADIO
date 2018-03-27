@@ -33,7 +33,7 @@ img {max-width:100%;}
 <script>
 function ajxx(u){if (confirm('Are you sure?')) ajx(u);}
 function ajx(u){
-	//console.log(u);
+	document.getElementById("info").innerHTML = u;
 	fetch(u).then(function(res) {return res.text();}).then(function(text) {
 	var arr = text.split('<!---->');
 	//console.log(arr);
@@ -67,6 +67,7 @@ function ajx(u){
 	<div>
 		<button class="re" onClick='ajxx("/reradio")'>reRADIO</button>
 		<button class="re" onClick='ajxx("/resos")'>reSOS</button>
+		<button class="re" onClick='ajxx("/recam")'>reCAM</button>
 		
 	</div>
 	<div>
@@ -75,6 +76,7 @@ function ajx(u){
 		<button onClick='ajx("/killradio")'>killRadio</button>
 		<button onClick='ajx("/startradio")'>startRadio</button>
 		<button onClick='ajxx("/camera")'>CAMERA</button>
+		<button onClick='ajx("/cameraone")'>camONE</button>
 	</div>
 
 	<div>
@@ -125,6 +127,7 @@ http.createServer((req, res) => {
 		let cmd= arr[0] || null;
 		let key= arr[1] || null;
 		let val= arr[2] || null;
+		let lev= arr[3] || null;
 		let command='';
 			//-----------------------------------------------
 			if(cmd==='mpc' || cmd==='ls' || cmd==='df'){
@@ -133,9 +136,13 @@ http.createServer((req, res) => {
 					command +=' '+key;
 					if(val){
 						command +=' '+val;
+						if(lev){
+							command +=' '+lev;
+						}
 					}
 				}
 			}
+			console.log('command=,command');
 			
 			if (cmd ==='reboot')   command='sudo reboot';
 			if (cmd ==='poweroff') command='sudo poweroff';
@@ -150,7 +157,11 @@ http.createServer((req, res) => {
 			if (cmd ==='startradio')  command= `/usr/local/bin/node /home/pi/app/radio/index.js & > /dev/null`;
 			
 			if (cmd ==='reradio')     command= `ps -ef | grep app/radio/index.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/radio/index.js & > /dev/null`;
-			if (cmd ==='resos')     command= `ps -ef | grep app/radio/sos.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/radio/sos.js & > /dev/null`;
+			if (cmd ==='resos')       command= `ps -ef | grep app/radio/sos.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/radio/sos.js & > /dev/null`;
+			if (cmd ==='recam')       command= `ps -ef | grep app/camera/index.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/camera/index.js`;
+			if (cmd ==='cameraone')    command= `/usr/local/bin/node /home/pi/app/camera/one.js`;
+
+
 			console.log(command);
 			
 			 
