@@ -19,12 +19,16 @@ res.write(`
 <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAT0EyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAF//wAAv/8AAN//AADv/wAA9/8AAPv/AAD9/wAA/v8AAP9/AAD/vwAA/98AAP/vAAD/9wAA//sAAP/9AAD//gAA" />
 <style>
 body,button{font:normal 17px verdana}
+body,h3{margin:3px; padding:0;}
 div.wrap {background:white; position:relative;}
-div {margin:1%; padding:0.5%;border-bottom:1px solid #e8e8e8; clear:both; background:#f8f8f8;}
+div {margin:0.33%; padding:0.33%;border-bottom:1px solid #e8e8e8; clear:both; background:#f8f8f8;}
 div.main {max-width:800px; margin:auto;}
-a,button {text-align:center; padding:0.2em; margin:0.2em; background:#ddd;line-height:1.5em;display: inline-block; border:1px solid gray; border-radius:0.5em;min-width:5.8em;text-decoration:none;}
-button:active,button:focus {outline: none;border-color:red;}
+a,button {text-align:center; padding:0.2em; margin:0.2em; background:#ddd;line-height:1.5em;display: inline-block; border:1px solid gray; border-radius:0.75em;min-width:6em;text-decoration:none;}
+.re {background:#eec;}
+.sy {background:#ccf;}
+button:active,button:focus {outline: none;border-color:red; background:#888; opacity:0.7;}
 pre {font-size:0.88em; width:100%; background:white;}
+img {max-width:100%;}
 </style>
 <script>
 function ajxx(u){if (confirm('Are you sure?')) ajx(u);}
@@ -42,7 +46,7 @@ function ajx(u){
 <div class="main">
 <h3>SOS...</h3>
 	<div>
-		<button onClick='location.href="/"'>reLoad</button>
+		<button class="re" onClick='location.href="/"'>reLoad</button>
 		<button onClick='ajx("/mpc/current")'>Info</button>
 		<button onClick='ajx("/mpc/play")'>Play</button>
 		<button onClick='ajx("/mpc/stop")'>Stop</button>
@@ -53,25 +57,24 @@ function ajx(u){
 	<div>
 		<button onClick='ajx("/mpc/play/1")'>TOK FM</button>
 		<button onClick='ajx("/mpc/play/2")'>RMF Classic</button>
-		<button onClick='ajx("/mpc/play/5")'>Szczecin</button>
-		<button onClick='ajx("/mpc/play/8")'>Trójka</button>
+		<button onClick='ajx("/mpc/play/8")'>Szczecin</button>
 	</div>
 
 	<div>
-		<button onClick='ajxx("/reboot")'>Reboot</button>
-		<button onClick='ajxx("/poweroff")'>PowerOFF</button>
-		<button onClick='ajx("/psnode")'>PS node</button>
-		<button onClick='ajx("/psradio")'>PS radio</button>
+		<button class="sy" onClick='ajxx("/reboot")'>Reboot</button>
+		<button class="sy" onClick='ajxx("/poweroff")'>PowerOFF</button>
 	</div>
 	<div>
-		<button onClick='ajxx("/reradio")'>reRADIO</button>
-		<button onClick='ajxx("/resos")'>reSOS</button>
+		<button class="re" onClick='ajxx("/reradio")'>reRADIO</button>
+		<button class="re" onClick='ajxx("/resos")'>reSOS</button>
 		
 	</div>
 	<div>
-		<button onClick='ajx("/psradio")'>psradio</button>
-		<button onClick='ajx("/killradio")'>killradio</button>
-		<button onClick='ajx("/startradio")'>startradio</button>
+		<button onClick='ajx("/psnode")'>PS node</button>
+		<button onClick='ajx("/psradio")'>PS radio</button>
+		<button onClick='ajx("/killradio")'>killRadio</button>
+		<button onClick='ajx("/startradio")'>startRadio</button>
+		<button onClick='ajxx("/camera")'>CAMERA</button>
 	</div>
 
 	<div>
@@ -84,7 +87,7 @@ function ajx(u){
 		
 	</div>
 	<div>
-		<button onClick='ajxx("/camera")'>CAMERA</button>
+		
 	</div>
 	<span id="info"></span>
 	<!---->
