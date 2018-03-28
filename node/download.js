@@ -6,10 +6,10 @@ const moddir      = '/usr/local/lib/node_modules/';
 const exec = require("child_process").exec;
 const spawn = require("child_process").spawn;
 
-	//let http = require('http');
-	let path = require('path');
-	let fs = require('fs');
-	let url = require('url');
+	const http = require('http');
+	const path = require('path');
+	const fs = require('fs');
+	const url = require('url');
 
 
 // Function to download file using wget
@@ -56,6 +56,41 @@ var download_file_curl = function(file_url) {
 };
 
 
+/*
+
+// dowload by http
+var hfile_url = 'https://www.wi.zut.edu.pl/templates/wizut/assets/images/logo/zut-logo-1.jpg';
+
+
+// We will be downloading the files to a directory, so make sure it's there
+// This step is not required if you have manually created the directory
+var mkdir = 'mkdir -p ' + DOWNLOAD_DIR;
+var child = exec(mkdir, function(err, stdout, stderr) {
+    if (err) throw err;
+    else download_file_httpget(hfile_url);
+});
+
+// Function to download file using HTTP.get
+var download_file_httpget = function(hfile_url) {
+var options = {
+    host: url.parse(hfile_url).host,
+    port: 80,
+    path: url.parse(hfile_url).pathname
+};
+
+var file_name = url.parse(hfile_url).pathname.split('/').pop();
+var file = fs.createWriteStream(DOWNLOAD_DIR + file_name);
+
+http.get(options, function(res) {
+    res.on('data', function(data) {
+            file.write(data);
+        }).on('end', function() {
+            file.end();
+            console.log(file_name + ' downloaded to ' + DOWNLOAD_DIR);
+        });
+    });
+};
+*/
 
 let serverURLs = [
 'https://raw.githubusercontent.com/ZnakZorro/radioRADIO/master/radio.json',
