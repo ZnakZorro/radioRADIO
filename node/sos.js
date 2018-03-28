@@ -1,4 +1,5 @@
 "use strict"; 
+const DS      = '/';
 const moddir      = '/usr/local/lib/node_modules/';
 const http = require('http');
 const exec = require('child_process').exec;
@@ -63,6 +64,9 @@ function ajx(u){
 	<div>
 		<button class="sy" onClick='ajxx("/reboot")'>Reboot</button>
 		<button class="sy" onClick='ajxx("/poweroff")'>PowerOFF</button>
+		<button class="sy" onClick='ajx("/test")'>test</button>
+		<button class="sy" onClick='ajxx("/getpsid.js")'>getpsid.js</button>
+		<button class="sy" onClick='ajxx("/download.js")'>down$Git</button>
 	</div>
 	<div>
 		<button class="re" onClick='ajxx("/reradio")'>reRADIO</button>
@@ -80,7 +84,7 @@ function ajx(u){
 	</div>
 
 	<div>
-		<button onClick='ajx("/ls/-l")'>LS</button>
+		<button onClick='ajx("/ls/-l/~")'>LS</button>
 		<button onClick='ajx("/df/-h")'>DF</button>
 		<button onClick='ajx("/temp")'>Temp</button>
 		<button onClick='ajx("/wifi")'>WIFI</button>
@@ -128,8 +132,9 @@ http.createServer((req, res) => {
 		let key= arr[1] || null;
 		let val= arr[2] || null;
 		let lev= arr[3] || null;
+		console.log(cmd,key,val,lev)
 		let command='';
-			//-----------------------------------------------
+			//--------only you ---------------------------------------
 			if(cmd==='mpc' || cmd==='ls' || cmd==='df'){
 				command +=cmd;
 				if(key){
@@ -142,8 +147,11 @@ http.createServer((req, res) => {
 					}
 				}
 			}
-			console.log('command=,command');
 			
+			if(cmd==='getpsid.js' || cmd==='download.js'){ 
+				command = __dirname+DS+cmd;
+			}
+			console.log(__dirname,'1 command=',command);
 			if (cmd ==='reboot')   command='sudo reboot';
 			if (cmd ==='poweroff') command='sudo poweroff';
 			if (cmd ==='temp')     command='/opt/vc/bin/vcgencmd measure_temp';
@@ -160,6 +168,7 @@ http.createServer((req, res) => {
 			if (cmd ==='resos')       command= `ps -ef | grep app/radio/sos.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/radio/sos.js & > /dev/null`;
 			if (cmd ==='recam')       command= `ps -ef | grep app/camera/index.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/camera/index.js`;
 			if (cmd ==='cameraone')    command= `/usr/local/bin/node /home/pi/app/camera/one.js`;
+			if (cmd ==='test')    command= `/home/pi/app/radio/test.js`;
 
 
 			console.log(command);
