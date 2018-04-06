@@ -60,6 +60,7 @@
 {"title":"Muzo.FM","stream":"http://stream4.nadaje.com/muzo"},
 {"title":"XtremeL","stream":"http://8.38.78.173:8156/stream"},
 {"title":"ClassicFM","stream":"http://media-the.musicradio.com/ClassicFM"},
-  {"title":"croonerradio","stream":"http://50.7.76.250:8790/autodj"}
+  {"title":"CroonerRadio","stream":"http://50.7.76.250:8790/autodj"},
+  {"title":"RadioParadise","stream":"http://stream-tx3.radioparadise.com/ogg-192?1522990354"}
    
 ]
