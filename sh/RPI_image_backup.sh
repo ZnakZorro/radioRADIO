@@ -3,6 +3,7 @@
 # Automate Raspberry Pi Backups
 #
 # Kristofer Källsbo 2017 www.hackviking.com
+# https://www.hackviking.com/single-board-computers/raspberry-pi/automated-raspberry-pi-backup-complete-image/
 #
 # Usage: system_backup.sh {path} {days of retention}
 #
