@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Raspberry Pi Camera</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style type="text/css">
+        body {
+            background-color: #0b97c4;
+        }
+		body, button,div{font:normal 11pt Verdana;margin:0.5em;padding:0.25em;}
+		button {min-width:3.5em;}
+        #container {
+            /*width: 50%;
+            margin: 0 auto;*/
+			/*text-align:center;*/
+        }
+
+        p {
+            width: 100%;
+            text-align: center;
+        }
+#container {
+/*
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+  */
+}
+img#image {
+width:100%;
+/*max-width:100%;*/
+}		
+table {border:0;text-align:center;}
+td {width:4em;height:4em;border:0; margin:0;padding:1em; text-align:center;width:4em; valign:middle;}
+    </style>
+    <script type="text/javascript">
+function klik(){
+	ajx('./klik')
+}
+function czas(t){
+	ajx('./time/'+t)
+}
+	
+function ajx(url){	
+	fetch(url, {
+		method: 'GET', 
+		mode: 'no-cors', 
+		redirect: 'follow',
+		headers: new Headers({'Content-Type': 'text/plain'})
+		//headers: new Headers({'Content-Type': 'application/json'})
+	}).then(function(response) {
+		return response.text();
+	}).then(function(tx) {
+		console.log(tx);
+		document.getElementById("info").innerHTML = tx;
+	}).catch(function(err) {
+		console.log(err);
+	});	
+}
+	
+                var socket = io();
+		var last = (new Date()).getTime();
+        document.onreadystatechange = function () {
+            var state = document.readyState
+            if (state == 'complete') {
+                var imageCount = 0;
+                socket.on('image', function(message) {
+					var time = (new Date()).getTime();
+					var delta = time-last;
+					last = time;
+                    document.getElementById("image").src = 'data:image/jpg;base64,' + message;
+                    document.getElementById("caption").innerHTML = 'Image #' +imageCount++ + ' time='+delta+'ms';
+					
+                });
+                socket.on('tablica', function(message) {
+                    document.getElementById("caption").innerHTML = message;
+					var arrr = JSON.parse(message);
+					//console.log(arrr);
+					var arr = arrr.tablica;
+					//console.log(arr);
+
+					var ileX=arr[0].length-1;
+					var ileY=arr.length-1;
+					var html = '<table>';
+					document.getElementById("caption").innerHTML = '<pre>';
+					for(var yy in arr){
+						html += "<tr>\n" ;
+						for(var xx in arr[yy]){
+							var d = arr[ileY-yy][ileX-xx];
+							//console.log(xx,yy, d);
+							var styl = 'background:rgb('+d+','+d+','+d+');';
+							html += '<td style="'+styl+'">'+d+"</td>\t" ;
+						}
+						html += "</tr>\n" ;
+					}
+					html += '</table>';
+					document.getElementById("caption").innerHTML = html;
+					document.getElementById("image").src = 'data:image/jpg;base64,' + arrr.image;
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+<button onClick="klik()">Klik</button>
+<button onClick="czas(1)">Start</button>
+<button onClick="czas(250)">250ms</button>
+<button onClick="czas(500)">500ms</button>
+<button onClick="czas(1000)">1s</button>
+<button onClick="czas(3000)">3s</button>
+<button onClick="czas(5000)">5s</button>
+<button onClick="czas(10000)">10s</button>
+<button onClick="czas(0)">Stop</button>
+<div id="container">
+    <img  id="image">
+</div>
+<p style="text-align:center;" id="caption">Image #0</p>
+<p id="info">????</p>
+</body>
+</html>
