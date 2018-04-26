@@ -16,8 +16,10 @@ app.get('/', function (req, res) {
 let jpeg = require('jpeg-js');
 let Campi = require('campi');
 let mess=null;
-
+console.time('testForEach');
 let klik = function(){
+	
+	console.time('testForEach');
 	let buff = [];
 	//console.log((new Date()).toLocaleString());	
 	let startt = (new Date()).getTime();
@@ -31,7 +33,12 @@ let klik = function(){
 		hflip: true,
 		vflip: true
 	}, function (err, stream) {
-		if (err) {throw err;}	
+		if (err) {
+			//throw err;
+			console.log('errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
+			setTimeout(klik,100);
+			return;
+		}	
 			stream.on('end', function (d) {
 				let stopt = (new Date()).getTime();
 				//console.log((new Date()).toLocaleString());
@@ -104,7 +111,8 @@ let klik = function(){
 					
 					let message = JSON.stringify({"tablica":arr,"image":bufor});
 					io.sockets.emit('tablica', message);
-					setTimeout(klik,10);
+					console.timeEnd('testForEach');
+					setTimeout(klik,100);
 			});
 			stream.on('data', function (d) {
 				//console.log(typeof(d),d.length);
