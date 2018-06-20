@@ -27,6 +27,8 @@ div.main {max-width:800px; margin:auto;}
 a,button {text-align:center; padding:0.2em; margin:0.2em; background:#ddd;line-height:1.5em;display: inline-block; border:1px solid gray; border-radius:0.75em;min-width:6em;text-decoration:none;}
 .re {background:#eec;}
 .sy {background:#ccf;}
+.red {background:red; color:white}
+.blue {background:blue; color:white}
 button:active,button:focus {outline: none;border-color:red; background:#888; opacity:0.7;}
 pre {font-size:0.88em; width:100%; background:white;}
 img {max-width:100%;}
@@ -46,6 +48,14 @@ function ajx(u){
 <div class="wrap">
 <div class="main">
 <h3>SOS...</h3>
+
+	<div>
+		<button class="re red" onClick='ajxx("/reradio")'>reRADIO</button>
+		<button class="re blue" onClick='ajxx("/resos")'>reSOS</button>
+		<button class="re" onClick='ajxx("/recam")'>reCAM</button>
+		
+	</div>
+	
 	<div>
 		<button class="re" onClick='location.href="/"'>reLoad</button>
 		<button onClick='ajx("/mpc/current")'>Info</button>
@@ -68,12 +78,7 @@ function ajx(u){
 		<button class="sy" onClick='ajxx("/getpsid.js")'>getpsid.js</button>
 		<button class="sy" onClick='ajxx("/download.js")'>down$Git</button>
 	</div>
-	<div>
-		<button class="re" onClick='ajxx("/reradio")'>reRADIO</button>
-		<button class="re" onClick='ajxx("/resos")'>reSOS</button>
-		<button class="re" onClick='ajxx("/recam")'>reCAM</button>
-		
-	</div>
+
 	<div>
 		<button onClick='ajx("/psnode")'>PS node</button>
 		<button onClick='ajx("/psradio")'>PS radio</button>
@@ -84,7 +89,8 @@ function ajx(u){
 	</div>
 
 	<div>
-		<button onClick='ajx("/ls/-l/~")'>LS</button>
+		<button onClick='ajx("ls")'>ls </button>
+		<button onClick='ajx("lsradio")'>ls radio</button>
 		<button onClick='ajx("/df/-h")'>DF</button>
 		<button onClick='ajx("/temp")'>Temp</button>
 		<button onClick='ajx("/wifi")'>WIFI</button>
@@ -118,9 +124,9 @@ function sendImage(res,imgURL){
 http.createServer((req, res) => {
 	let arr = (req.url).split('/')
 	let s= arr.shift();
-	console.log('#67arr=',arr);
+	console.log('#130arr=',arr);
 	var akcja = arr[0];
-	console.log('#69 akcja=',akcja);
+	//console.log('#132 akcja=',akcja);
 	
 	if (akcja =='favicon.ico') {res.end(); return;}
 	if (akcja =='1.jpg') {sendImage(res,'1.jpg'); return;}
@@ -132,7 +138,10 @@ http.createServer((req, res) => {
 		let key= arr[1] || null;
 		let val= arr[2] || null;
 		let lev= arr[3] || null;
-		console.log(cmd,key,val,lev)
+		if (cmd) cmd=cmd.replace(',,','/');
+		console.log('#144 cmd=',cmd)
+		console.log('#144 key=',key)
+		console.log('#144 cmd,key,val,lev=',cmd,key,val,lev)
 		let command='';
 			//--------only you ---------------------------------------
 			if(cmd==='mpc' || cmd==='ls' || cmd==='df'){
@@ -151,7 +160,9 @@ http.createServer((req, res) => {
 			if(cmd==='getpsid.js' || cmd==='download.js'){ 
 				command = __dirname+DS+cmd;
 			}
-			console.log(__dirname,'1 command=',command);
+			console.log(__dirname);
+			
+			console.log('command0 =',command);
 			if (cmd ==='reboot')   command='sudo reboot';
 			if (cmd ==='poweroff') command='sudo poweroff';
 			if (cmd ==='temp')     command='/opt/vc/bin/vcgencmd measure_temp';
@@ -169,16 +180,17 @@ http.createServer((req, res) => {
 			if (cmd ==='recam')       command= `ps -ef | grep app/camera/index.js | grep -v grep | awk '{print "sudo kill -9 "$2}' | sh && /usr/local/bin/node /home/pi/app/camera/index.js`;
 			if (cmd ==='cameraone')    command= `/usr/local/bin/node /home/pi/app/camera/one.js`;
 			if (cmd ==='test')    command= `/home/pi/app/radio/test.js`;
+			if (cmd ==='lsradio')    command= `ls /home/pi/app/radio/ -l`;
 
 
-			console.log(command);
+			console.log('command1 =',command);
 			
 			 
 
 			//-----------------------------------------------
 	
 	if (command){
-		console.log('command=',command);
+		console.log('command9=',command);
 		try {
 			exec(command,function(err, stdout, stderr){
 				console.log('#err=',err);
@@ -203,5 +215,4 @@ http.createServer((req, res) => {
 }).listen(9999,function(){
 	console.log('Server running at /:9999');
 });
-
 
