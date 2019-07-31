@@ -71,10 +71,11 @@
 {"title":"tokfm","stream":"http://poznan6.radio.pionier.net.pl:8000/radiotok.ogg"},
 {"title":"tokfm","stream":"http://warszawa1-2.radio.pionier.net.pl:8000/pl/radiotok.ogg"},
 {"title":"tokfm","stream":"http://wroclaw.radio.pionier.net.pl:8000/pl/radiotok.ogg"},
-{"title":"AuPhi-Class","stream":"http://94.23.201.38:8000/stream"},
-{"title":"AuPhi-Boroq","stream":"http://94.23.201.38:8000/stream"},
-{"title":"AuPhi-","stream":"http://94.23.201.38:8030/stream"},
-{"title":"AuPhi-","stream":"http://94.23.201.38:8040/stream"},
-{"title":"AuPhi-","stream":"http://94.23.201.38:8050/stream"}
+{"title":"AuPhi-Baroq","stream":"http://94.23.201.38:8000/stream"},
+{"title":"AuPhi-Classic","stream":"http://94.23.201.38:8010/stream"},
+{"title":"AuPhi-Jazz","stream":"http://94.23.201.38:8020/stream"},
+{"title":"AuPhi-Lonque","stream":"http://94.23.201.38:8030/stream"},
+{"title":"AuPhi-Rock","stream":"http://94.23.201.38:8040/stream"},
+{"title":"AuPhi-Xtr","stream":"http://94.23.201.38:8050/stream"}
 
 ]
