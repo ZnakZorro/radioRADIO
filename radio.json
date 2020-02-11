@@ -1,6 +1,7 @@
 [
-{"title":"TOK FM 48p","stream": "http://gdansk1-1.radio.pionier.net.pl:8000/pl/tuba10-1.mp3"},
+
 {"title":"TOK FM 2","stream": "http://lodz.radio.pionier.net.pl:8000/pl/tuba10-1.mp3"},
+{"title":"TOK FM 48p","stream": "http://gdansk1-1.radio.pionier.net.pl:8000/pl/tuba10-1.mp3"},
 {"title":"RMF Classic","stream": "http://31.192.216.5:8000/rmf_classic"},
 {"title":"Jedynka","stream": "http://stream3.polskieradio.pl:8900/"},
 {"title":"Dwójka","stream": "http://stream3.polskieradio.pl:8902/"},
@@ -76,6 +77,7 @@
 {"title":"AuPhi-Jazz","stream":"http://94.23.201.38:8020/stream"},
 {"title":"AuPhi-Lonque","stream":"http://94.23.201.38:8030/stream"},
 {"title":"AuPhi-Rock","stream":"http://94.23.201.38:8040/stream"},
-{"title":"AuPhi-Xtr","stream":"http://94.23.201.38:8050/stream"}
+{"title":"AuPhi-Xtr","stream":"http://94.23.201.38:8050/stream"},
+{"title":"Radio-Rock","stream":"https://pl-play.adtonos.com/rock-radio"}
 
 ]
