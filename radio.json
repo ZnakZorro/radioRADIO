@@ -78,6 +78,8 @@
 {"title":"AuPhi-Lonque","stream":"http://94.23.201.38:8030/stream"},
 {"title":"AuPhi-Rock","stream":"http://94.23.201.38:8040/stream"},
 {"title":"AuPhi-Xtr","stream":"http://94.23.201.38:8050/stream"},
-{"title":"Radio-Rock","stream":"https://pl-play.adtonos.com/rock-radio"}
+{"title":"Radio-Rock","stream":"https://pl-play.adtonos.com/rock-radio"},
+{"title":"UK1940","stream":"http://149.255.59.162:8062/stream?type=http"},
+  
 
 ]
