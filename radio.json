@@ -80,6 +80,11 @@
 {"title":"AuPhi-Xtr","stream":"http://94.23.201.38:8050/stream"},
 {"title":"Radio-Rock","stream":"https://pl-play.adtonos.com/rock-radio"},
 {"title":"UK1940","stream":"http://149.255.59.162:8062/stream?type=http"},
+{"title":"Swiss Jazz","stream":"http://stream.srg-ssr.ch/m/rsj/mp3_128"},
+{"title":"Swiss Classic","stream":"http://stream.srg-ssr.ch/m/rsc_de/mp3_128"},
+{"title":"Swiss Pop","stream":"http://stream.srg-ssr.ch/m/rsp/mp3_128"},
+{"title":"","stream":""},
+{"title":"","stream":""},
   
 
 ]
