@@ -84,8 +84,13 @@
 {"title":"Swiss Jazz","stream":"http://stream.srg-ssr.ch/m/rsj/mp3_128"},
 {"title":"Swiss Classic","stream":"http://stream.srg-ssr.ch/m/rsc_de/mp3_128"},
 {"title":"Swiss Pop","stream":"http://stream.srg-ssr.ch/m/rsp/mp3_128"},
-{"title":"","stream":""},
-{"title":"","stream":""},
-  
-
+{"title":"JazzFm","stream":"http://radiojazzfm.radiokitstream.org/radiojazzfm.mp3"},
+{"title":"NewOnce","stream":"http://streamer.radio.co/s93b51ccc1/listen"},
+{"title":"R_Spacja","stream":"https://pl-play.adtonos.com/8104/radiospacjapl"},
+{"title":"RockNews","stream":"http://radio.rockserwis.fm/live"},
+{"title":"Wnet","stream":"https://media.wnet.fm/wnet.fm"},
+{"title":"Paranorm","stream":"http://paranormalium.waw.pl/radio/8040/radio.mp3"},
+//{"title":"","stream":""},
+//{"title":"","stream":""},
 ]
+		
